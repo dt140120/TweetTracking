@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Twitter-Crawl</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap-theme.css') }}">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/dropsearch.css') }}">
+</head>
+<body>
+<div class="container">
+    <div class="header text-center">
+        <h3 class="text-muted">Hệ Thống Dữ Liệu twitter</h3>
+        <div class="container">
+            <div class="col-12">
+                <div class="row">
+                    <a type="button" class="col-4" href="{{url_for('get_profiles')}}">PROFILE</a>
+                    <a type="button" class="col-4" href="{{url_for('get_tweets')}}">TWEETS</a>
+                    <a type="button" class="col-4" href="{{url_for('get_topics')}}">TOPIC</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h1></h1>
+    {% block content_1 %}{% endblock %}
+    <footer class="footer">
+    </footer>
+</div>
+</body>
+</html>
