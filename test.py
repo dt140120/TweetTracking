@@ -1,6 +1,14 @@
 import json
-from twitter_scraper import get_profile_details
 
-twitter_username = "dongtran1401"
-dict = json.loads(get_profile_details(twitter_username=twitter_username, filename=''))
-print(type(dict))
+from twitter_scraper import scrape_keyword
+
+dict = scrape_keyword(keyword="(from:elonmusk) filter:links -filter:replies",
+               browser="firefox",
+               tweets_count=10,
+               until="2023-03-14",
+               since="2023-02-14",
+               output_format="json",
+               filename="",
+               headless=False)
+
+print(dict)

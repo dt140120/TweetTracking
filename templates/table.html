@@ -1,0 +1,61 @@
+{% extends "tweets.html" %}
+{% block content_2 %}
+    <div class="container mt-5 px-2" id="widthtable">
+        <div class="mb-2 d-flex justify-content-between align-items-center" id="widthtable">
+            <div class="position-relative">
+                <span class="position-absolute search"><i class="fa fa-search"></i></span>
+                <input class="form-control w-100" placeholder="Search by order#, name...">
+            </div>
+            <div class="px-2">
+                <span>Filters <i class="fa fa-angle-down"></i></span>
+                <i class="fa fa-ellipsis-h ms-3"></i>
+            </div>
+        </div>
+        <div class="table-responsive" id="widthtable">
+            <table class="table table-responsive table-borderless" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);">
+                <thead>
+                <tr class="bg-light">
+{#                    <th scope="col" width="2%">#</th>#}
+                    <th scope="col" width="5%">ID</th>
+                    <th scope="col" width="10%">user-name</th>
+                    <th scope="col" width="10%">name</th>
+                    <th scope="col" width="10%">profile_pic</th>
+                    <th scope="col" width="10%">replies</th>
+                    <th scope="col" width="10%">retweets</th>
+                    <th scope="col" width="8%">likes</th>
+                    <th scope="col" width="10%">is_retweet</th>
+                    <th scope="col" width="10%">posted</th>
+                    <th scope="col" width="10%">content</th>
+                    <th scope="col" width="10%">images</th>
+                    <th scope="col" width="10%">videos</th>
+                    <th scope="col" width="10%">URL</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for key in tweets %}
+                    <tr>
+                        <td>{{ key }}</td>
+                        <td>{{ tweets[key]['username'] }}</td>
+                        <td>{{ tweets[key]['name'] }}</td>
+                        <td><img src={{ tweets[key]['profile_picture'] }} width="25"></td>
+                        <td>{{ tweets[key]['replies'] }}</td>
+                        <td>{{ tweets[key]['retweets'] }}</td>
+                        <td>{{ tweets[key]['likes'] }}</td>
+                        <td>{{ tweets[key]['is_retweet'] }}</td>
+                        <td>{{ tweets[key]['posted_time'] }}</td>
+                        <td>{{ tweets[key]['content'] }}</td>
+                        <td><a href={{ tweets[key]['images'] }}>link</a></td>
+                        <td><a href={{ tweets[key]['videos'] }}>link</a></td>
+                        <td><a href={{ tweets[key]['tweet_url'] }}>link</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <script>
+            var widthtable = document.getElementById("widthtable")
+            widthtable.style.width = "200%"
+            widthtable.style.fontFamily = "Open Sans, sans-serif"
+        </script>
+    </div>
+{% endblock %}
