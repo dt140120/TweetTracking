@@ -335,3 +335,25 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 DevTools listening on ws://127.0.0.1:53615/devtools/browser/a1751cab-e5d5-4cc2-a44d-c93fed558695
 1679140231518	Marionette	INFO	Stopped listening on port 39011
 JavaScript error: https://abs.twimg.com/responsive-web/client-web/vendor.3a0e728a.js, line 74: TypeError: can't access dead object
+1679141544892	geckodriver	INFO	Listening on 127.0.0.1:47143
+1679141545406	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--no-sandbox" "--disable-dev-shm-usage" "--ignore-certificat ... .3" "--remote-debugging-port" "47905" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilefiSu7G"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679141545791	Marionette	INFO	Marionette enabled
+1679141545796	Marionette	INFO	Listening on port 37905
+Read port: 37905
+console.error: "Warning: unrecognized command line flag -no-sandbox\n"
+console.error: "Warning: unrecognized command line flag -ignore-certificate-errors\n"
+console.error: "Warning: unrecognized command line flag -log-level\n"
+console.error: "Warning: unrecognized command line flag -disable-notifications\n"
+console.error: "Warning: unrecognized command line flag -user-agent\n"
+WebDriver BiDi listening on ws://127.0.0.1:47905
+1679141545870	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1679141545905	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:38785","sslProxy":"127.0.0.1:38785"}
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilefiSu7G/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:47905/devtools/browser/51af4e07-5a20-4d44-a63b-4bb048b61f72
+1679141658096	Marionette	INFO	Stopped listening on port 37905
+JavaScript error: https://abs.twimg.com/responsive-web/client-web/vendor.3a0e728a.js, line 74: TypeError: can't access dead object
