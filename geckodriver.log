@@ -357,3 +357,223 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 DevTools listening on ws://127.0.0.1:47905/devtools/browser/51af4e07-5a20-4d44-a63b-4bb048b61f72
 1679141658096	Marionette	INFO	Stopped listening on port 37905
 JavaScript error: https://abs.twimg.com/responsive-web/client-web/vendor.3a0e728a.js, line 74: TypeError: can't access dead object
+1679224311461	geckodriver	INFO	Listening on 127.0.0.1:42709
+1679224311466	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--no-sandbox" "--disable-dev-shm-usage" "--ignore-certificat ... .0" "--remote-debugging-port" "58501" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile2c6wJ3"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679224312459	Marionette	INFO	Marionette enabled
+1679224312464	Marionette	INFO	Listening on port 37999
+Read port: 37999
+console.error: "Warning: unrecognized command line flag -no-sandbox\n"
+console.error: "Warning: unrecognized command line flag -ignore-certificate-errors\n"
+console.error: "Warning: unrecognized command line flag -log-level\n"
+console.error: "Warning: unrecognized command line flag -disable-notifications\n"
+console.error: "Warning: unrecognized command line flag -user-agent\n"
+WebDriver BiDi listening on ws://127.0.0.1:58501
+1679224312651	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1679224312702	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:40483","sslProxy":"127.0.0.1:40483"}
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile2c6wJ3/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:58501/devtools/browser/c23da7dd-8f9e-4e5f-ab57-9f535b439b64
+1679224397625	Marionette	INFO	Stopped listening on port 37999
+JavaScript error: https://abs.twimg.com/responsive-web/client-web/vendor.3a0e728a.js, line 74: TypeError: can't access dead object
+1679224601644	geckodriver	INFO	Listening on 127.0.0.1:43845
+1679224602164	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--no-sandbox" "--disable-dev-shm-usage" "--ignore-certificat ... 36" "--remote-debugging-port" "53587" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileCNUn0f"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679224602534	Marionette	INFO	Marionette enabled
+1679224602539	Marionette	INFO	Listening on port 39607
+Read port: 39607
+console.error: "Warning: unrecognized command line flag -no-sandbox\n"
+console.error: "Warning: unrecognized command line flag -ignore-certificate-errors\n"
+console.error: "Warning: unrecognized command line flag -log-level\n"
+console.error: "Warning: unrecognized command line flag -disable-notifications\n"
+console.error: "Warning: unrecognized command line flag -user-agent\n"
+WebDriver BiDi listening on ws://127.0.0.1:53587
+1679224602614	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1679224602637	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:40857","sslProxy":"127.0.0.1:40857"}
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileCNUn0f/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53587/devtools/browser/04d5b57b-0c5d-4c3a-b42c-9fb29ecbb8c2
+1679224678926	Marionette	INFO	Stopped listening on port 39607
+JavaScript error: https://abs.twimg.com/responsive-web/client-web/vendor.3a0e728a.js, line 74: TypeError: can't access dead object
+1679225050279	geckodriver	INFO	Listening on 127.0.0.1:50043
+1679225050285	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--no-sandbox" "--disable-dev-shm-usage" "--ignore-certificat ... .4" "--remote-debugging-port" "39117" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilep0R0CH"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679225050653	Marionette	INFO	Marionette enabled
+1679225050658	Marionette	INFO	Listening on port 45693
+Read port: 45693
+console.error: "Warning: unrecognized command line flag -no-sandbox\n"
+console.error: "Warning: unrecognized command line flag -ignore-certificate-errors\n"
+console.error: "Warning: unrecognized command line flag -log-level\n"
+console.error: "Warning: unrecognized command line flag -disable-notifications\n"
+console.error: "Warning: unrecognized command line flag -user-agent\n"
+WebDriver BiDi listening on ws://127.0.0.1:39117
+1679225050731	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1679225050763	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:37815","sslProxy":"127.0.0.1:37815"}
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilep0R0CH/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:39117/devtools/browser/9bda6555-74ac-4ba5-b01c-0fcb76a335cf
+1679225138127	Marionette	INFO	Stopped listening on port 45693
+JavaScript error: https://abs.twimg.com/responsive-web/client-web/vendor.3a0e728a.js, line 74: TypeError: can't access dead object
+1679225923771	geckodriver	INFO	Listening on 127.0.0.1:60081
+1679225924290	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--no-sandbox" "--disable-dev-shm-usage" "--ignore-certificat ... 36" "--remote-debugging-port" "37423" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile58NuJb"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679225924677	Marionette	INFO	Marionette enabled
+1679225924682	Marionette	INFO	Listening on port 46707
+Read port: 46707
+console.error: "Warning: unrecognized command line flag -no-sandbox\n"
+console.error: "Warning: unrecognized command line flag -ignore-certificate-errors\n"
+console.error: "Warning: unrecognized command line flag -log-level\n"
+console.error: "Warning: unrecognized command line flag -disable-notifications\n"
+console.error: "Warning: unrecognized command line flag -user-agent\n"
+WebDriver BiDi listening on ws://127.0.0.1:37423
+1679225924754	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1679225924781	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:37383","sslProxy":"127.0.0.1:37383"}
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile58NuJb/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:37423/devtools/browser/b54fb3c9-40e7-417f-a750-2388bc716dd2
+1679226016371	Marionette	INFO	Stopped listening on port 46707
+JavaScript error: https://abs.twimg.com/responsive-web/client-web/vendor.3a0e728a.js, line 74: TypeError: can't access dead object
+1679226152161	geckodriver	INFO	Listening on 127.0.0.1:53587
+1679226152167	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--no-sandbox" "--disable-dev-shm-usage" "--ignore-certificat ... 61" "--remote-debugging-port" "47135" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile4WeLlG"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679226152485	Marionette	INFO	Marionette enabled
+1679226152491	Marionette	INFO	Listening on port 43247
+console.error: "Warning: unrecognized command line flag -no-sandbox\n"
+console.error: "Warning: unrecognized command line flag -ignore-certificate-errors\n"
+console.error: "Warning: unrecognized command line flag -log-level\n"
+console.error: "Warning: unrecognized command line flag -disable-notifications\n"
+console.error: "Warning: unrecognized command line flag -user-agent\n"
+WebDriver BiDi listening on ws://127.0.0.1:47135
+Read port: 43247
+1679226152739	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1679226152740	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:44875","sslProxy":"127.0.0.1:44875"}
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile4WeLlG/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:47135/devtools/browser/31c95275-9434-430b-8927-50ba220b2e9e
+1679226229222	Marionette	INFO	Stopped listening on port 43247
+JavaScript error: https://abs.twimg.com/responsive-web/client-web/vendor.3a0e728a.js, line 74: TypeError: can't access dead object
+1679226254771	geckodriver	INFO	Listening on 127.0.0.1:36163
+1679226255280	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--no-sandbox" "--disable-dev-shm-usage" "--ignore-certificat ... .2" "--remote-debugging-port" "60507" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileHnyIqR"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679226255657	Marionette	INFO	Marionette enabled
+1679226255662	Marionette	INFO	Listening on port 40179
+Read port: 40179
+console.error: "Warning: unrecognized command line flag -no-sandbox\n"
+console.error: "Warning: unrecognized command line flag -ignore-certificate-errors\n"
+console.error: "Warning: unrecognized command line flag -log-level\n"
+console.error: "Warning: unrecognized command line flag -disable-notifications\n"
+console.error: "Warning: unrecognized command line flag -user-agent\n"
+WebDriver BiDi listening on ws://127.0.0.1:60507
+1679226255737	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1679226255791	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:42049","sslProxy":"127.0.0.1:42049"}
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileHnyIqR/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:60507/devtools/browser/baeb9568-72d9-42d5-963d-5b22f503c751
+1679226344426	Marionette	INFO	Stopped listening on port 40179
+JavaScript error: https://abs.twimg.com/responsive-web/client-web/vendor.3a0e728a.js, line 74: TypeError: can't access dead object
+1679226505539	geckodriver	INFO	Listening on 127.0.0.1:36661
+1679226505546	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--no-sandbox" "--disable-dev-shm-usage" "--ignore-certificat ... 91" "--remote-debugging-port" "51855" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile7IVitS"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679226505879	Marionette	INFO	Marionette enabled
+1679226505885	Marionette	INFO	Listening on port 42049
+console.error: "Warning: unrecognized command line flag -no-sandbox\n"
+console.error: "Warning: unrecognized command line flag -ignore-certificate-errors\n"
+console.error: "Warning: unrecognized command line flag -log-level\n"
+console.error: "Warning: unrecognized command line flag -disable-notifications\n"
+console.error: "Warning: unrecognized command line flag -user-agent\n"
+WebDriver BiDi listening on ws://127.0.0.1:51855
+Read port: 42049
+1679226506140	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1679226506141	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:45411","sslProxy":"127.0.0.1:45411"}
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile7IVitS/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:51855/devtools/browser/e5e5144a-9c17-4682-8890-36079f5ab6fd
+1679226592449	Marionette	INFO	Stopped listening on port 42049
+JavaScript error: https://abs.twimg.com/responsive-web/client-web/vendor.3a0e728a.js, line 74: TypeError: can't access dead object
+1679226840955	geckodriver	INFO	Listening on 127.0.0.1:54827
+1679226841477	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--no-sandbox" "--disable-dev-shm-usage" "--ignore-certificat ... 36" "--remote-debugging-port" "41119" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileBy7x6O"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679226841840	Marionette	INFO	Marionette enabled
+1679226841846	Marionette	INFO	Listening on port 44909
+Read port: 44909
+console.error: "Warning: unrecognized command line flag -no-sandbox\n"
+console.error: "Warning: unrecognized command line flag -ignore-certificate-errors\n"
+console.error: "Warning: unrecognized command line flag -log-level\n"
+console.error: "Warning: unrecognized command line flag -disable-notifications\n"
+console.error: "Warning: unrecognized command line flag -user-agent\n"
+WebDriver BiDi listening on ws://127.0.0.1:41119
+1679226841919	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1679226841962	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:42921","sslProxy":"127.0.0.1:42921"}
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileBy7x6O/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:41119/devtools/browser/d6ac9aa2-2df1-410b-a5f6-b34725e1fce0
+1679226920913	Marionette	INFO	Stopped listening on port 44909
+JavaScript error: https://abs.twimg.com/responsive-web/client-web/vendor.3a0e728a.js, line 74: TypeError: can't access dead object
+1679227374923	geckodriver	INFO	Listening on 127.0.0.1:35057
+1679227375444	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--no-sandbox" "--disable-dev-shm-usage" "--ignore-certificat ... .1" "--remote-debugging-port" "44165" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileayk1I6"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679227375868	Marionette	INFO	Marionette enabled
+1679227375873	Marionette	INFO	Listening on port 39079
+console.error: "Warning: unrecognized command line flag -no-sandbox\n"
+console.error: "Warning: unrecognized command line flag -ignore-certificate-errors\n"
+console.error: "Warning: unrecognized command line flag -log-level\n"
+console.error: "Warning: unrecognized command line flag -disable-notifications\n"
+console.error: "Warning: unrecognized command line flag -user-agent\n"
+WebDriver BiDi listening on ws://127.0.0.1:44165
+Read port: 39079
+1679227376103	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1679227376103	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:37851","sslProxy":"127.0.0.1:37851"}
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileayk1I6/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:44165/devtools/browser/86d13fe0-5a18-40bf-ada7-8c382d8f540a
+1679227455421	Marionette	INFO	Stopped listening on port 39079
+JavaScript error: https://abs.twimg.com/responsive-web/client-web/vendor.3a0e728a.js, line 74: TypeError: can't access dead object
+1679227676147	geckodriver	INFO	Listening on 127.0.0.1:39321
+1679227676152	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--no-sandbox" "--disable-dev-shm-usage" "--ignore-certificat ... 40" "--remote-debugging-port" "44829" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilePjF3w3"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679227676520	Marionette	INFO	Marionette enabled
+1679227676525	Marionette	INFO	Listening on port 41049
+Read port: 41049
+console.error: "Warning: unrecognized command line flag -no-sandbox\n"
+console.error: "Warning: unrecognized command line flag -ignore-certificate-errors\n"
+console.error: "Warning: unrecognized command line flag -log-level\n"
+console.error: "Warning: unrecognized command line flag -disable-notifications\n"
+console.error: "Warning: unrecognized command line flag -user-agent\n"
+WebDriver BiDi listening on ws://127.0.0.1:44829
+1679227676599	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1679227676636	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:37297","sslProxy":"127.0.0.1:37297"}
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilePjF3w3/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:44829/devtools/browser/f751e9d6-12fc-4774-bce4-0b35ad208436
+1679227762102	Marionette	INFO	Stopped listening on port 41049
+JavaScript error: https://abs.twimg.com/responsive-web/client-web/vendor.3a0e728a.js, line 74: TypeError: can't access dead object

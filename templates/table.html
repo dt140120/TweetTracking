@@ -15,7 +15,7 @@
             <table class="table table-responsive table-borderless" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);">
                 <thead>
                 <tr class="bg-light">
-{#                    <th scope="col" width="2%">#</th>#}
+                    {#                    <th scope="col" width="2%">#</th>#}
                     <th scope="col" width="5%">ID</th>
                     <th scope="col" width="10%">user-name</th>
                     <th scope="col" width="10%">name</th>
@@ -42,8 +42,13 @@
                         <td>{{ tweets[key]['retweets'] }}</td>
                         <td>{{ tweets[key]['likes'] }}</td>
                         <td>{{ tweets[key]['is_retweet'] }}</td>
-                        <td>{{ tweets[key]['posted_time'] }}</td>
-                        <td>{{ tweets[key]['content'] }}</td>
+                        <td>{{ tweets[key]['posted_time'][:10] }}</td>
+                        <td>
+                            <button class="btn btn-primary" data-toggle="collapse" data-target="#{{ key }}">View</button>
+                            <div id={{ key }} class="collapse">
+                                {{ tweets[key]['content'] }}
+                            </div>
+                        </td>
                         <td><a href={{ tweets[key]['images'] }}>link</a></td>
                         <td><a href={{ tweets[key]['videos'] }}>link</a></td>
                         <td><a href={{ tweets[key]['tweet_url'] }}>link</a></td>
