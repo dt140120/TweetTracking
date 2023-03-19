@@ -1,4 +1,4 @@
-.body {
+body {
     padding-top: 0px;
 }
 .dropdown.dropdown-lg .dropdown-menu {
@@ -41,3 +41,4 @@
         min-width: 500px;
     }
 }
+
