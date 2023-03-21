@@ -1,6 +1,5 @@
 {% extends "index.html" %}
 {% block content_1 %}
-    {#    <form action="{{ url_for('get_tweets') }}" class="search" method="post">#}
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -9,9 +8,11 @@
                     <div class="input-group-btn">
                         <div class="btn-group" role="group">
                             <div class="dropdown dropdown-lg">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"></button>
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                        aria-expanded="false"></button>
                                 <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                    <form action="{{ url_for('get_tweets') }}" class="form-horizontal" role="form" method="post">
+                                    <form action="{{ url_for('get_tweets') }}" class="form-horizontal" role="form"
+                                          method="post">
                                         <div class="form-group">
                                             <label for="contain">Author</label>
                                             <input class="form-control" type="text" name="key"/>
@@ -20,24 +21,16 @@
                                             <label for="contain">Counts</label>
                                             <input class="form-control" type="text" name="counts"/>
                                         </div>
-{#                                        <div class="form-group">#}
-{#                                            <label for="filter">Filter by</label>#}
-{#                                            <select class="form-control">#}
-{#                                                <option value="0" selected>All Snippets</option>#}
-{#                                                <option value="1">Featured</option>#}
-{#                                                <option value="2">Most popular</option>#}
-{#                                                <option value="3">Top rated</option>#}
-{#                                                <option value="4">Most commented</option>#}
-{#                                            </select>#}
-{#                                        </div>#}
                                         <div class="form-group">
                                             <div class="form-group" style="display: inline-block">
                                                 <label for="filter">From</label>
-                                                <input class="form-control" type="date" value="2023-02-14" name="date_from"/>
+                                                <input class="form-control" type="date" value="2023-02-14"
+                                                       name="date_from"/>
                                             </div>
                                             <div class="form-group" style="display: inline-block">
                                                 <label for="filter">To</label>
-                                                <input class="form-control" type="date" value="2023-03-14" name="date_to"/>
+                                                <input class="form-control" type="date" value="2023-03-14"
+                                                       name="date_to"/>
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary">
@@ -55,7 +48,6 @@
             </div>
         </div>
     </div>
-    {#    </form>#}
     <h1></h1>
     {% block content_2 %}{% endblock %}
 {% endblock %}

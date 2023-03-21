@@ -13,7 +13,7 @@ def con_get_profiles(twitter_username):
 
 # controller
 def con_get_tweets(key, tweets_count, date_from, date_to):
-    tweets = json.loads(scrape_keyword(keyword=key, browser="firefox", tweets_count=tweets_count, until=date_to, since=date_from, output_format="json", filename=""))
+    tweets = json.loads(scrape_keyword(keyword=key, browser="firefox", tweets_count=tweets_count, until=date_to, since=date_from, output_format="json", filename="", headless=False))
     return tweets
 
 
