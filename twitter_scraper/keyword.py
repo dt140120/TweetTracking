@@ -8,7 +8,7 @@ import re
 import json
 import os
 import csv
-from twitter_scraper_selenium.scraping_utilities import Scraping_utilities
+from .scraping_utilities import Scraping_utilities
 import logging
 
 logger = logging.getLogger(__name__)

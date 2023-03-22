@@ -15,7 +15,7 @@
             <table class="table table-responsive table-borderless" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);">
                 <thead>
                 <tr class="bg-light">
-                    {#                    <th scope="col" width="2%">#</th>#}
+                    <th scope="col" width="2%">#</th>
                     <th scope="col" width="5%">ID</th>
                     <th scope="col" width="10%">user-name</th>
                     <th scope="col" width="10%">name</th>
@@ -32,26 +32,27 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for key in tweets %}
+                {% for tweet in tweets %}
                     <tr>
-                        <td>{{ key }}</td>
-                        <td>{{ tweets[key]['username'] }}</td>
-                        <td>{{ tweets[key]['name'] }}</td>
-                        <td><img src={{ tweets[key]['profile_picture'] }} width="25"></td>
-                        <td>{{ tweets[key]['replies'] }}</td>
-                        <td>{{ tweets[key]['retweets'] }}</td>
-                        <td>{{ tweets[key]['likes'] }}</td>
-                        <td>{{ tweets[key]['is_retweet'] }}</td>
-                        <td>{{ tweets[key]['posted_time'][:10] }}</td>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ tweet.id }}</td>
+                        <td>{{ tweet.username }}</td>
+                        <td>{{ tweet.name }}</td>
+                        <td style="text-align:center; vertical-align:middle;"><img src="{{url_for('static', filename='/img/icon_profile.png')}}" width="25"></td>
+                        <td>{{ tweet.replies_count }}</td>
+                        <td>{{ tweet.retweets_count }}</td>
+                        <td>{{ tweet.likes_count }}</td>
+                        <td>{{ tweet.retweet }}</td>
+                        <td>{{ tweet.datestamp }}</td>
                         <td>
-                            <button class="btn btn-primary" data-toggle="collapse" data-target="#{{ key }}">View</button>
-                            <div id={{ key }} class="collapse">
-                                {{ tweets[key]['content'] }}
+                            <button class="btn btn-primary" data-toggle="collapse" data-target="#{{ tweet.id }}">View</button>
+                            <div id={{ tweet.id }} class="collapse">
+                                {{ tweet.tweet }}
                             </div>
                         </td>
-                        <td><a href={{ tweets[key]['images'] }}>link</a></td>
-                        <td><a href={{ tweets[key]['videos'] }}>link</a></td>
-                        <td><a href={{ tweets[key]['tweet_url'] }}>link</a></td>
+                        <td><a href={{ tweet.quote_url }}>link</a></td>
+                        <td><a href={{ tweet.quote_url }}>link</a></td>
+                        <td><a href={{ tweet.link }}>link</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>
