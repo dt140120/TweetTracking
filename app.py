@@ -1,9 +1,26 @@
 import json
+import twint
 from flask import Flask, render_template, request
 from twitter_scraper import get_profile_details, scrape_keyword
 
 app = Flask(__name__)
 
+
+#finder_box
+def get_data(key, tweets_count, date_from, date_to):
+    c = twint.Config()
+    c.Username = key
+    c.Until = date_to
+    c.Since = date_from
+    c.Count = True
+    c.Limit = tweets_count
+    c.Replies = False
+    c.Retweets = False
+    c.Store_object = True
+    c.Hide_output = True
+    twint.run.Search(c)
+    tweets = twint.output.tweets_list
+    return tweets
 
 # controller
 def con_get_profiles(twitter_username):
@@ -13,7 +30,8 @@ def con_get_profiles(twitter_username):
 
 # controller
 def con_get_tweets(key, tweets_count, date_from, date_to):
-    tweets = json.loads(scrape_keyword(keyword=key, browser="firefox", tweets_count=tweets_count, until=date_to, since=date_from, output_format="json", filename=""))
+    # tweets = json.loads(scrape_keyword(keyword=key, browser="firefox", tweets_count=tweets_count, until=date_to, since=date_from, output_format="json", filename="", headless=False))
+    tweets = get_data(key, tweets_count, date_from, date_to)
     return tweets
 
 
@@ -44,8 +62,14 @@ def get_tweets():
         date_from = request.form.get('date_from')
         date_to = request.form.get('date_to')
         tweets_count = request.form.get('counts')
-        tweets = con_get_tweets(key, int(tweets_count), date_from, date_to)
-        return render_template('table.html', tweets=tweets)
+        str = type(tweets_count)
+        tweets = con_get_tweets(key, tweets_count, date_from, date_to)
+        if tweets == []:
+            message = 'Không có dữ liệu'
+            return render_template('tweets.html', message = message)
+        elif tweets != []:
+            return render_template('table.html', tweets=tweets)
+        # return(key + " " + date_to + " " + date_from + " " + tweets_count + " ")
     else:
         return render_template('tweets.html')
 
