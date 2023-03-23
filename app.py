@@ -12,6 +12,7 @@ def get_data(key, tweets_count, date_from, date_to):
     c.Username = key
     c.Until = date_to
     c.Since = date_from
+    c.Count = True
     c.Limit = tweets_count
     c.Replies = False
     c.Retweets = False
@@ -61,12 +62,14 @@ def get_tweets():
         date_from = request.form.get('date_from')
         date_to = request.form.get('date_to')
         tweets_count = request.form.get('counts')
-        tweets = con_get_tweets(key, int(tweets_count), date_from, date_to)
+        str = type(tweets_count)
+        tweets = con_get_tweets(key, tweets_count, date_from, date_to)
         if tweets == []:
             message = 'Không có dữ liệu'
             return render_template('tweets.html', message = message)
         elif tweets != []:
             return render_template('table.html', tweets=tweets)
+        # return(key + " " + date_to + " " + date_from + " " + tweets_count + " ")
     else:
         return render_template('tweets.html')
 
