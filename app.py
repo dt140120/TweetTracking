@@ -6,8 +6,8 @@ from twitter_scraper import get_profile_details, scrape_keyword
 app = Flask(__name__)
 
 
-#finder_box
-def get_data(key, tweets_count, date_from, date_to):
+#finder_box_tweets
+def get_data_tweets(key, tweets_count, date_from, date_to):
     c = twint.Config()
     c.Username = key
     c.Until = date_to
@@ -21,6 +21,22 @@ def get_data(key, tweets_count, date_from, date_to):
     twint.run.Search(c)
     tweets = twint.output.tweets_list
     return tweets
+#finder_box_topics
+def get_data_topics(key, tweets_count, date_from, date_to):
+    c = twint.Config()
+    c.Search = key
+    c.Until = None
+    c.Since = None
+    c.Count = True
+    c.Limit = tweets_count
+    c.Replies = False
+    c.Retweets = False
+    c.Store_object = True
+    c.Hide_output = True
+    twint.run.Search(c)
+    topics = twint.output.tweets_list
+    return topics
+
 
 # controller
 def con_get_profiles(twitter_username):
@@ -31,13 +47,14 @@ def con_get_profiles(twitter_username):
 # controller
 def con_get_tweets(key, tweets_count, date_from, date_to):
     # tweets = json.loads(scrape_keyword(keyword=key, browser="firefox", tweets_count=tweets_count, until=date_to, since=date_from, output_format="json", filename="", headless=False))
-    tweets = get_data(key, tweets_count, date_from, date_to)
+    tweets = get_data_tweets(key, tweets_count, date_from, date_to)
     return tweets
 
 
 # controller
-def con_get_topics(key, date_from, date_to):
-    return
+def con_get_topics(key, tweets_count, date_from, date_to):
+    topics = get_data_topics(key, tweets_count, date_from, date_to)
+    return topics
 
 
 # route
@@ -76,7 +93,17 @@ def get_tweets():
 @app.route("/get_topic", methods=['GET', 'POST'])
 def get_topics():
     if request.method == 'POST':
-        return
+        key = request.form.get('key')
+        date_from = request.form.get('date_from')
+        date_to = request.form.get('date_to')
+        tweets_count = request.form.get('counts')
+        topics = con_get_topics(key, int(tweets_count), date_from, date_to)
+        print(topics)
+        if topics == []:
+            message = 'Không có dữ liệu'
+            return render_template('topics.html.html', message=message)
+        elif topics != []:
+            return render_template('table.html', tweets=topics)
     else:
         return render_template('topics.html')
 
