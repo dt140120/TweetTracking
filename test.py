@@ -81,12 +81,27 @@ start_time = time.time()
 # twint.run.Search(c)
 
 
+# c = twint.Config()
+# c.Username = 'elonmusk'
+# c.Since = None
+# c.Until = None
+# c.Count = True
+# c.Limit = 100
+# c.Replies = False
+# c.Retweets = False
+# c.Store_object = True
+# c.Hide_output = False
+# twint.run.Search(c)
+# tweets = twint.output.tweets_list
+# print(tweets)
+
+
 c = twint.Config()
-c.Username = 'elonmusk'
+c.Search = 'coin'
 c.Since = None
 c.Until = None
 c.Count = True
-c.Limit = 100
+c.Limit = 10
 c.Replies = False
 c.Retweets = False
 c.Store_object = True
