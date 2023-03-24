@@ -1,4 +1,8 @@
 {% extends "tweets.html" %}
+{#{% block header-table %}#}
+{#    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">#}
+{#    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.css">#}
+{#{% endblock %}#}
 {% block content_2 %}
     <div class="container mt-5 px-2" id="widthtable">
         <div class="mb-2 d-flex justify-content-between align-items-center" id="widthtable">
@@ -12,7 +16,8 @@
             </div>
         </div>
         <div class="table-responsive" id="widthtable">
-            <table class="table table-responsive table-borderless" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);">
+            <table class="table table-responsive table-borderless" id="data"
+                   style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);">
                 <thead>
                 <tr class="bg-light">
                     <th scope="col" width="2%">#</th>
@@ -38,14 +43,16 @@
                         <td>{{ tweet.id }}</td>
                         <td>{{ tweet.username }}</td>
                         <td>{{ tweet.name }}</td>
-                        <td style="text-align:center; vertical-align:middle;"><img src="{{url_for('static', filename='/img/icon_profile.png')}}" width="25"></td>
+                        <td style="text-align:center; vertical-align:middle;"><img
+                                src="{{ url_for('static', filename='/img/icon_profile.png') }}" width="25"></td>
                         <td>{{ tweet.replies_count }}</td>
                         <td>{{ tweet.retweets_count }}</td>
                         <td>{{ tweet.likes_count }}</td>
                         <td>{{ tweet.retweet }}</td>
                         <td>{{ tweet.datestamp }}</td>
                         <td>
-                            <button class="btn btn-primary" data-toggle="collapse" data-target="#{{ tweet.id }}">View</button>
+                            <button class="btn btn-primary" data-toggle="collapse" data-target="#{{ tweet.id }}">View
+                            </button>
                             <div id={{ tweet.id }} class="collapse">
                                 {{ tweet.tweet }}
                             </div>
@@ -55,8 +62,19 @@
                         <td><a href={{ tweet.link }}>link</a></td>
                     </tr>
                 {% endfor %}
+                {% set tweets = [] %}
                 </tbody>
             </table>
+            {#            <div class="pagination">#}
+            {#                <a href="#">&laquo;</a>#}
+            {#                <a href="#">1</a>#}
+            {#                <a href="#">2</a>#}
+            {#                <a href="#">3</a>#}
+            {#                <a href="#">4</a>#}
+            {#                <a href="#">5</a>#}
+            {#                <a href="#">6</a>#}
+            {#                <a href="#">&raquo;</a>#}
+            {#            </div>#}
         </div>
         <script>
             var widthtable = document.getElementById("widthtable")
