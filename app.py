@@ -63,6 +63,7 @@ def get_tweets():
         date_to = request.form.get('date_to')
         tweets_count = request.form.get('counts')
         str = type(tweets_count)
+        tweets = []
         tweets = con_get_tweets(key, tweets_count, date_from, date_to)
         if tweets == []:
             message = 'Không có dữ liệu'
