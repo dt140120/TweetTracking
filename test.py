@@ -70,14 +70,29 @@ start_time = time.time()
 # tweets = twint.output.tweets_list
 # print("--- %s seconds ---" % (time.time() - start_time))
 
+# c = twint.Config()
+# c.Username = 'dongtran1401'
+# c.Until = ''
+# c.Since = ''
+# c.Limit = 50
+# c.Replies = False
+# c.Store_object = True
+# c.Hide_output = True
+# twint.run.Search(c)
+
+
 c = twint.Config()
-c.Username = 'dongtran1401'
-c.Until = ''
-c.Since = ''
-c.Limit = 50
+c.Username = 'elonmusk'
+c.Since = None
+c.Until = None
+c.Count = True
+c.Limit = 100
 c.Replies = False
+c.Retweets = False
 c.Store_object = True
-c.Hide_output = True
+c.Hide_output = False
 twint.run.Search(c)
+tweets = twint.output.tweets_list
+print(tweets)
 
 
