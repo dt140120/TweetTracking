@@ -16,9 +16,14 @@ def get_data(key, tweets_count, date_from, date_to):
     c.Limit = tweets_count
     c.Replies = False
     c.Retweets = False
+    # c.Store_object = True
     c.Store_object = True
     c.Hide_output = True
+    # print('twint.output.tweets_list',len(twint.output.tweets_list))
+    if len(twint.output.tweets_list) != 0:
+        twint.output.tweets_list = []
     twint.run.Search(c)
+    # print('twint.output.tweets_list',len(twint.output.tweets_list))
     tweets = twint.output.tweets_list
     return tweets
 
@@ -31,7 +36,12 @@ def con_get_profiles(twitter_username):
 # controller
 def con_get_tweets(key, tweets_count, date_from, date_to):
     # tweets = json.loads(scrape_keyword(keyword=key, browser="firefox", tweets_count=tweets_count, until=date_to, since=date_from, output_format="json", filename="", headless=False))
+    print('key:',key )
+    print('tweets_count:',tweets_count )
+    print('date_from:',date_from )
+    print('date_to:',date_to )
     tweets = get_data(key, tweets_count, date_from, date_to)
+    print('tweet: ', len(tweets))
     return tweets
 
 
@@ -62,8 +72,9 @@ def get_tweets():
         date_from = request.form.get('date_from')
         date_to = request.form.get('date_to')
         tweets_count = request.form.get('counts')
+        # print('tweets_count: ',len(tweets_count))
         tweets = con_get_tweets(key, int(tweets_count), date_from, date_to)
-        print(tweets)
+        # print('tweets: ',len(tweets))
         if tweets == []:
             message = 'Không có dữ liệu'
             return render_template('tweets.html', message = message)
@@ -82,4 +93,6 @@ def get_topics():
 
 
 if __name__ == "__main__":
+    app.debug = True
     app.run()
+    app.run(debug = True)
