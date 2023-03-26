@@ -7,9 +7,7 @@
                     <div class="col">
                         <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
                             <ol class="breadcrumb mb-0">
-                                <li class="breadcrumb-item"><a href="{{ url_for('main') }}">Home</a></li>
-                                <li class="breadcrumb-item"><a href="{{ url_for('get_profiles') }}">User</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                                <p class="text-uppercase font-weight-bold" style="margin-bottom: 0;">User Profile</p>
                             </ol>
                         </nav>
                     </div>
@@ -17,7 +15,7 @@
 
                 <div class="row">
                     <div class="col-lg-4">
-                        <div class="card mb-4">
+                        <div class="card mb-4" style="height: 311px;">
                             <div class="card-body text-center">
                                 <img src={{ users['profile_image_url_https'] }} alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                                 <h5 class="my-3">{{ users['screen_name'] }}</h5>
