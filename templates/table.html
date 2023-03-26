@@ -1,18 +1,29 @@
 {% extends "tweets.html" %}
+{#{% block header-table %}#}
+{#    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">#}
+{#    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.css">#}
+{#{% endblock %}#}
 {% block content_2 %}
     <div class="container mt-5 px-2" id="widthtable">
-        <div class="mb-2 d-flex justify-content-between align-items-center" id="widthtable">
+        <div class="mb-2 d-flex justify-content-between align-items-center" id="widthtable" style="justify-content: flex-end !important;">
             <div class="position-relative">
                 <span class="position-absolute search"><i class="fa fa-search"></i></span>
-                <input class="form-control w-100" placeholder="Search by order#, name...">
+                <input class="form-control w-100" placeholder="Search by order#, name..." id="filter-input">
             </div>
             <div class="px-2">
-                <span>Filters <i class="fa fa-angle-down"></i></span>
-                <i class="fa fa-ellipsis-h ms-3"></i>
+                <!-- <span>Filters <i class="fa fa-angle-down"></i></span>
+                <i class="fa fa-ellipsis-h ms-3"></i> -->
+                <button type="button" class="btn btn-primary">
+                    <div style="text-align: center;">
+                        <span>Filters</span>
+                        <!-- <i class="fa fa-ellipsis-h ms-3"></i> -->
+                    </div>
+                </button>
             </div>
         </div>
         <div class="table-responsive" id="widthtable">
-            <table class="table table-responsive table-borderless" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);">
+            <table class="table table-responsive table-borderless" id="data"
+                   style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);">
                 <thead>
                 <tr class="bg-light">
                     <th scope="col" width="2%">#</th>
@@ -26,8 +37,7 @@
                     <th scope="col" width="10%">is_retweet</th>
                     <th scope="col" width="10%">posted</th>
                     <th scope="col" width="10%">content</th>
-                    <th scope="col" width="10%">images</th>
-                    <th scope="col" width="10%">videos</th>
+                    <!-- <th scope="col" width="10%">images</th> -->
                     <th scope="col" width="10%">URL</th>
                 </tr>
                 </thead>
@@ -38,23 +48,50 @@
                         <td>{{ tweet.id }}</td>
                         <td>{{ tweet.username }}</td>
                         <td>{{ tweet.name }}</td>
-                        <td style="text-align:center; vertical-align:middle;"><img src="{{url_for('static', filename='/img/icon_profile.png')}}" width="25"></td>
+                        <td style="text-align:center; vertical-align:middle;"><img
+                                src="{{ url_for('static', filename='/img/icon_profile.png') }}" width="25"></td>
                         <td>{{ tweet.replies_count }}</td>
                         <td>{{ tweet.retweets_count }}</td>
                         <td>{{ tweet.likes_count }}</td>
                         <td>{{ tweet.retweet }}</td>
                         <td>{{ tweet.datestamp }}</td>
                         <td>
-                            <button class="btn btn-primary" data-toggle="collapse" data-target="#{{ tweet.id }}">View</button>
+                            <!-- <button class="btn btn-primary" data-toggle="collapse" data-target="#{{ tweet.id }}">View
+                            </button>
                             <div id={{ tweet.id }} class="collapse">
                                 {{ tweet.tweet }}
-                            </div>
+                            </div> -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                View
+                              </button>
+                              
+                              <!-- Modal -->
+                              <div class="modal fade" id="exampleModalCenter" data-backdrop="false"  tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                      {{ tweet.tweet }}
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                         </td>
-                        <td><a href={{ tweet.quote_url }}>link</a></td>
-                        <td><a href={{ tweet.quote_url }}>link</a></td>
+                        <!-- <td>
+                            <button type="button" class="btn btn-primary" data-toggle="modal">link</button>
+                        </td> -->
                         <td><a href={{ tweet.link }}>link</a></td>
                     </tr>
                 {% endfor %}
+                {% set tweets = [] %}
                 </tbody>
             </table>
         </div>
@@ -62,6 +99,54 @@
             var widthtable = document.getElementById("widthtable")
             widthtable.style.width = "200%"
             widthtable.style.fontFamily = "Open Sans, sans-serif"
+        </script>
+        <script>
+            const filterInput = document.getElementById("filter-input");
+            const tableRows = document.querySelectorAll("#data tbody tr");
+
+            filterInput.addEventListener("keyup", function () {
+                const filterValue = filterInput.value.toLowerCase();
+
+                tableRows.forEach(row => {
+                    const ID = row.cells[1].innerText.toLowerCase();
+                    const userName = row.cells[2].innerText.toLowerCase();
+                    const name = row.cells[3].innerText.toLowerCase();
+                    const date = row.cells[9].innerText.toLowerCase();
+
+                    if (ID.includes(filterValue) || userName.includes(filterValue) || name.includes(filterValue) || date.includes(filterValue)) {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
+                });
+            });
+        </script>
+        <script>
+            // lấy phần Modal
+            var modal = document.getElementById('myModal');
+
+            // Lấy phần button mở Modal
+            var btn = document.getElementById("myBtn");
+
+            // Lấy phần span đóng Modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // Khi button được click thi mở Modal
+            btn.onclick = function () {
+                modal.style.display = "block";
+            }
+
+            // Khi span được click thì đóng Modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+            // Khi click ngoài Modal thì đóng Modal
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
         </script>
     </div>
 {% endblock %}
