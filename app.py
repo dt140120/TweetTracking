@@ -96,8 +96,8 @@ def main():
 def get_profiles():
     if request.method == 'POST':
         users = con_get_profiles(request.form.get('username'))
-        re_tw = get_rep_twe(request.form.get('username'), int(15))
-        return render_template('result.html', users=users, replies = re_tw[0], retweets = re_tw[1])
+        # re_tw = get_rep_twe(request.form.get('username'), int(15))
+        return render_template('result.html', users=users)
     else:
         return render_template('profiles.html')
 

@@ -55,20 +55,18 @@ start_time = time.time()
 
 
 
-# import twint
-#
-# c = twint.Config()
-# c.Username = 'elonmusk'
-# c.Until = ''
-# c.Since = ''
-# c.Limit = 50
-# c.Store_object = True
-# c.Store_csv = True
-# c.Hide_output = True
-# c.Output = "twint_save/data.csv"
-# twint.run.Search(c)
-# tweets = twint.output.tweets_list
-# print("--- %s seconds ---" % (time.time() - start_time))
+c = twint.Config()
+c.Username = 'elonmusk'
+c.Until = ''
+c.Since = ''
+c.Limit = 200
+c.Store_object = True
+c.Store_csv = True
+c.Hide_output = True
+c.Output = "twint_save/data.csv"
+twint.run.Search(c)
+tweets = twint.output.tweets_list
+print("--- %s seconds ---" % (time.time() - start_time))
 
 # c = twint.Config()
 # c.Username = 'dongtran1401'
@@ -110,27 +108,27 @@ start_time = time.time()
 # tweets = twint.output.tweets_list
 # print(tweets)
 
-import twint
-from classify.predict_class import classify
-
-key = "elonmusk"
-tweest_count = 10;
-cal = 0
-
-c = twint.Config()
-c.Search = "(from:" + key + ") -filter:links -filter:replies"
-c.Count = True
-c.Limit = tweest_count
-c.Store_object = True
-c.Hide_output = True
-if len(twint.output.tweets_list) != 0:
-    twint.output.tweets_list = []
-twint.run.Search(c)
-re_tw_s = twint.output.tweets_list
-for re_tw in re_tw_s:
-    print(cal)
-    cal += re_tw.replies_count
-    print(classify(re_tw.tweet))
-print(cal)
+# import twint
+# from classify.predict_class import classify
+#
+# key = "elonmusk"
+# tweest_count = 10;
+# cal = 0
+#
+# c = twint.Config()
+# c.Search = "(from:" + key + ") -filter:links -filter:replies"
+# c.Count = True
+# c.Limit = tweest_count
+# c.Store_object = True
+# c.Hide_output = True
+# if len(twint.output.tweets_list) != 0:
+#     twint.output.tweets_list = []
+# twint.run.Search(c)
+# re_tw_s = twint.output.tweets_list
+# for re_tw in re_tw_s:
+#     print(cal)
+#     cal += re_tw.replies_count
+#     print(classify(re_tw.tweet))
+# print(cal)
 
 
