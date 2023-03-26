@@ -55,20 +55,20 @@ start_time = time.time()
 
 
 
-import twint
+# import twint
 
-c = twint.Config()
-c.Username = 'elonmusk'
-c.Until = ''
-c.Since = ''
-c.Limit = 50
-c.Store_object = True
-c.Store_csv = True
-c.Hide_output = True
-c.Output = "twint_save/data.csv"
-twint.run.Search(c)
-tweets = twint.output.tweets_list
-print("--- %s seconds ---" % (time.time() - start_time))
+# c = twint.Config()
+# c.Username = 'elonmusk'
+# c.Until = ''
+# c.Since = ''
+# c.Limit = 50
+# c.Store_object = True
+# c.Store_csv = True
+# c.Hide_output = True
+# c.Output = "twint_save/data.csv"
+# twint.run.Search(c)
+# tweets = twint.output.tweets_list
+# print("--- %s seconds ---" % (time.time() - start_time))
 
 # c = twint.Config()
 # c.Username = 'dongtran1401'
@@ -96,18 +96,21 @@ print("--- %s seconds ---" % (time.time() - start_time))
 # print(tweets)
 
 
-# c = twint.Config()
-# c.Search = 'coin'
-# c.Since = None
-# c.Until = None
-# c.Count = True
-# c.Limit = 10
-# c.Replies = False
-# c.Retweets = False
-# c.Store_object = True
-# c.Hide_output = False
-# twint.run.Search(c)
-# tweets = twint.output.tweets_list
-# print(tweets)
+c = twint.Config()
+c.Search = 'Bloomberg Markets'
+c.Since = None
+c.Until = None
+c.Count = True
+c.Limit = 10
+c.Replies = False
+c.Retweets = False
+c.Store_object = True
+c.Hide_output = False
+twint.run.Search(c)
+tweets = twint.output.tweets_list
+for tweet in tweets:
+    print('photos:',tweet.photos)
+    print('source:',tweet.source)
+    print('tweet: ',tweet.tweet)
 
 
