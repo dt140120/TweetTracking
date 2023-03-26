@@ -57,7 +57,51 @@
                                 {{ tweet.tweet }}
                             </div>
                         </td>
-                        <td><a href={{ tweet.quote_url }}>link</a></td>
+                        <td>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">link</button>
+                            {#                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"#}
+                            {#                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">#}
+                            {#                                <div class="modal-dialog modal-dialog-centered" role="document">#}
+                            {#                                    <div class="modal-content">#}
+                            {#                                        <div class="modal-header">#}
+                            {#                                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>#}
+                            {#                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+                            {#                                                <span aria-hidden="true">&times;</span>#}
+                            {#                                            </button>#}
+                            {#                                        </div>#}
+                            {#                                        <div class="modal-body">#}
+                            {#                                            ...#}
+                            {#                                        </div>#}
+                            {#                                        <div class="modal-footer">#}
+                            {#                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close#}
+                            {#                                            </button>#}
+                            {#                                            <button type="button" class="btn btn-primary">Save changes</button>#}
+                            {#                                        </div>#}
+                            {#                                    </div>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            ...
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                            </button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
                         <td><a href={{ tweet.quote_url }}>link</a></td>
                         <td><a href={{ tweet.link }}>link</a></td>
                     </tr>
@@ -84,16 +128,16 @@
         <script>
             const filterInput = document.getElementById("filter-input");
             const tableRows = document.querySelectorAll("#data tbody tr");
-    
-            filterInput.addEventListener("keyup", function() {
+
+            filterInput.addEventListener("keyup", function () {
                 const filterValue = filterInput.value.toLowerCase();
-    
+
                 tableRows.forEach(row => {
                     const ID = row.cells[1].innerText.toLowerCase();
                     const userName = row.cells[2].innerText.toLowerCase();
                     const name = row.cells[3].innerText.toLowerCase();
                     const date = row.cells[9].innerText.toLowerCase();
-    
+
                     if (ID.includes(filterValue) || userName.includes(filterValue) || name.includes(filterValue) || date.includes(filterValue)) {
                         row.style.display = "";
                     } else {
@@ -101,6 +145,33 @@
                     }
                 });
             });
+        </script>
+        <script>
+            // lấy phần Modal
+            var modal = document.getElementById('myModal');
+
+            // Lấy phần button mở Modal
+            var btn = document.getElementById("myBtn");
+
+            // Lấy phần span đóng Modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // Khi button được click thi mở Modal
+            btn.onclick = function () {
+                modal.style.display = "block";
+            }
+
+            // Khi span được click thì đóng Modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+            // Khi click ngoài Modal thì đóng Modal
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
         </script>
     </div>
 {% endblock %}
