@@ -10,11 +10,16 @@ from classify.predict_class import classify
 
 app = Flask(__name__)
 
+<<<<<<< HEAD
 user_o = []
 list_pre_o = []
+=======
+label = ["business", "entertainment", "politics", "sport", "tech"]
+>>>>>>> f6e3319a5ede3936ba1560690799462b4b09d9ab
 
 # finder_box_tweets
 def get_data_tweets(key, tweets_count, date_from, date_to):
+    list_pre = []
     c = twint.Config()
     # c.Username = key
     c.Search = "(from:" + key + ") -filter:links -filter:replies"
@@ -28,11 +33,14 @@ def get_data_tweets(key, tweets_count, date_from, date_to):
         twint.output.tweets_list = []
     twint.run.Search(c)
     tweets = twint.output.tweets_list
-    return tweets
+    for tweet in tweets:
+        list_pre.append(label[classify(tweet.tweet)])
+    return tweets, list_pre
 
 
 # finder_box_topics
 def get_data_topics(key, tweets_count, date_from, date_to):
+    list_pre = []
     c = twint.Config()
     c.Search = key
     c.Until = None
@@ -45,7 +53,9 @@ def get_data_topics(key, tweets_count, date_from, date_to):
         twint.output.tweets_list = []
     twint.run.Search(c)
     topics = twint.output.tweets_list
-    return topics
+    for topic in topics:
+        list_pre.append(label[classify(topic.tweet)])
+    return topics, list_pre
 
 # finder_replies_tweets_15
 def get_rep_twe(key, tweest_count):
@@ -80,6 +90,7 @@ def multiThread(twitter_username,key, tweest_count ):
     thread1.join()
     thread2.join()
 
+<<<<<<< HEAD
     # return user, list, list_pre
 
 # controller
@@ -88,6 +99,12 @@ def con_get_profiles(twitter_username):
     user_o = []
     user_o= json.loads(get_profile_details(twitter_username=twitter_username, filename=''))
     return user_o
+=======
+# controller
+def con_get_profiles(twitter_username):
+    user = json.loads(get_profile_details(twitter_username=twitter_username, filename=''))
+    return user
+>>>>>>> f6e3319a5ede3936ba1560690799462b4b09d9ab
 
 
 # controller
@@ -131,13 +148,14 @@ def get_tweets():
         date_to = request.form.get('date_to')
         tweets_count = request.form.get('counts')
         # print('tweets_count: ',len(tweets_count))
-        tweets = con_get_tweets(key, int(tweets_count), date_from, date_to)
+        tweets, list_pre = con_get_tweets(key, int(tweets_count), date_from, date_to)
+        print(list_pre)
         # print('tweets: ',len(tweets))
         if tweets == []:
             message = 'Không có dữ liệu'
             return render_template('tweets.html', message=message)
         elif tweets != []:
-            return render_template('table.html', tweets=tweets)
+            return render_template('table.html', tweets=tweets, list_pre=list_pre)
     else:
         return render_template('tweets.html')
 
@@ -149,13 +167,14 @@ def get_topics():
         date_from = request.form.get('date_from')
         date_to = request.form.get('date_to')
         tweets_count = request.form.get('counts')
-        topics = con_get_topics(key, int(tweets_count), date_from, date_to)
+        topics, list_pre = con_get_topics(key, int(tweets_count), date_from, date_to)
         print(topics)
+        print(list_pre)
         if topics == []:
             message = 'Không có dữ liệu'
             return render_template('topics.html.html', message=message)
         elif topics != []:
-            return render_template('table.html', tweets=topics)
+            return render_template('table.html', tweets=topics, list_pre=list_pre)
     else:
         return render_template('topics.html')
 
