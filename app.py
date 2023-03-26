@@ -1,6 +1,7 @@
 import json
 import threading
 
+import time
 import twint
 from flask import Flask, render_template, request
 from twitter_scraper import get_profile_details
@@ -9,6 +10,9 @@ from classify.predict_class import classify
 
 app = Flask(__name__)
 
+user_o = []
+list_o = []
+list_pre_o = []
 
 # finder_box_tweets
 def get_data_tweets(key, tweets_count, date_from, date_to):
@@ -47,8 +51,10 @@ def get_data_topics(key, tweets_count, date_from, date_to):
 # finder_replies_tweets_15
 def get_rep_twe(key, tweest_count):
     re, tw = 0, 0
-    list = []
-    list_pre = []
+    global list_o
+    global list_pre_o
+    list_o = []
+    list_pre_o = []
     c = twint.Config()
     c.Search = "(from:" + key + ")"
     c.Count = True
@@ -62,9 +68,9 @@ def get_rep_twe(key, tweest_count):
     for re_tw in re_tw_s:
         re += re_tw.replies_count
         tw += re_tw.retweets_count
-        list_pre.append(classify(re_tw.tweet))
-    list.append(re, tw)
-    return list, list_pre
+        list_pre_o.append(classify(re_tw.tweet))
+    list_o.append(re, tw)
+    return list_o, list_pre_o
 
 
 def multiThread(twitter_username,key, tweest_count ):
@@ -77,15 +83,14 @@ def multiThread(twitter_username,key, tweest_count ):
     thread1.join()
     thread2.join()
 
-    user = thread1.result
-    list, list_pre = thread2.result
-
-    return user, list, list_pre
+    # return user, list, list_pre
 
 # controller
 def con_get_profiles(twitter_username):
-    user = json.loads(get_profile_details(twitter_username=twitter_username, filename=''))
-    return user
+    global user_o
+    user_o = []
+    user_o= json.loads(get_profile_details(twitter_username=twitter_username, filename=''))
+    return user_o
 
 
 # controller
@@ -110,9 +115,14 @@ def main():
 @app.route("/get_profiles", methods=['GET', 'POST'])
 def get_profiles():
     if request.method == 'POST':
-        users = con_get_profiles(request.form.get('username'))
+        # users = con_get_profiles(request.form.get('username'))
+        multiThread(request.form.get('username'),request.form.get('username'),15)
+        # time.sleep(4)
+        print('list:', str(list_o))
+        print('users:', str(user_o))
+        print('list_pre:', str(list_pre_o))
         # re_tw = get_rep_twe(request.form.get('username'), int(15))
-        return render_template('result.html', users=users)
+        return render_template('result.html', users=user_o)
     else:
         return render_template('profiles.html')
 
