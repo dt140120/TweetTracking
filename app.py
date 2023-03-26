@@ -1,7 +1,11 @@
 import json
+import threading
+
 import twint
 from flask import Flask, render_template, request
 from twitter_scraper import get_profile_details
+from threading import Thread
+from classify.predict_class import classify
 
 app = Flask(__name__)
 
@@ -15,9 +19,6 @@ def get_data_tweets(key, tweets_count, date_from, date_to):
     c.Since = date_from
     c.Count = True
     c.Limit = tweets_count
-    c.Links = False
-    c.Replies = False
-    c.Retweets = False
     c.Store_object = True
     c.Hide_output = True
     if len(twint.output.tweets_list) != 0:
@@ -34,10 +35,7 @@ def get_data_topics(key, tweets_count, date_from, date_to):
     c.Until = None
     c.Since = None
     c.Count = True
-    c.Links = False
     c.Limit = tweets_count
-    c.Replies = False
-    c.Retweets = False
     c.Store_object = True
     c.Hide_output = True
     if len(twint.output.tweets_list) != 0:
@@ -45,6 +43,28 @@ def get_data_topics(key, tweets_count, date_from, date_to):
     twint.run.Search(c)
     topics = twint.output.tweets_list
     return topics
+
+# finder_replies_tweets_15
+def get_rep_twe(key, tweest_count):
+    re, tw = 0, 0
+    list = []
+    c = twint.Config()
+    c.Search = "(from:" + key + ")"
+    c.Count = True
+    c.Limit = tweest_count
+    c.Store_object = True
+    c.Hide_output = True
+    if len(twint.output.tweets_list) != 0:
+        twint.output.tweets_list = []
+    twint.run.Search(c)
+    re_tw_s = twint.output.tweets_list
+    for re_tw in re_tw_s:
+        re += re_tw.replies_count
+        tw += re_tw.retweets_count
+    list.append(re, tw)
+    return list
+
+
 
 
 # controller
@@ -76,6 +96,7 @@ def main():
 def get_profiles():
     if request.method == 'POST':
         users = con_get_profiles(request.form.get('username'))
+        # re_tw = get_rep_twe(request.form.get('username'), int(15))
         return render_template('result.html', users=users)
     else:
         return render_template('profiles.html')

@@ -4,8 +4,8 @@ import string
 import math
 import random
 
-DATASET_DIR = 'bbc'
-STOPWORDS_FILE = 'stopwords-en.txt'
+DATASET_DIR = 'classify/bbc'
+STOPWORDS_FILE = 'classify/stopwords-en.txt'
 NUM_CLASSES = 5
 
 
@@ -185,7 +185,35 @@ class TextClassificator(object):
         return result
 
 
-if __name__ == "__main__":
+
+
+# if __name__ == "__main__":
+#
+#     X, y = get_dataset(DATASET_DIR)
+#
+#     aux = list(zip(X, y))
+#     random.shuffle(aux)
+#     X, y = zip(*aux)
+#
+#     NBC = TextClassificator()
+#     NBC.train(X[int(len(X) / NUM_CLASSES):], y[int(len(X) / NUM_CLASSES):])
+#
+#     str = input("Nhạp:")
+#     pred = NBC.predict(str)
+#     true = y[:int(len(X) / NUM_CLASSES)]
+#
+#     accuracy_1 = 0
+#     k = 0
+#     for item in true:
+#         accuracy = max(accuracy_1, sum(1 for i in range(1, len(pred)) if pred[i] == item) / float(len(pred)))
+#         if accuracy > accuracy_1:
+#             k = item
+#             p = accuracy
+#
+#     print(k)
+#     print("{0:.4f}".format(p))
+
+def classify(str):
 
     X, y = get_dataset(DATASET_DIR)
 
@@ -196,8 +224,7 @@ if __name__ == "__main__":
     NBC = TextClassificator()
     NBC.train(X[int(len(X) / NUM_CLASSES):], y[int(len(X) / NUM_CLASSES):])
 
-    pred = NBC.predict(
-        "America’s banks are missing hundreds of billions of dollars The Economist")
+    pred = NBC.predict(str)
     true = y[:int(len(X) / NUM_CLASSES)]
 
     accuracy_1 = 0
@@ -207,6 +234,4 @@ if __name__ == "__main__":
         if accuracy > accuracy_1:
             k = item
             p = accuracy
-
-    print(k)
-    print("{0:.4f}".format(p))
+    return k
