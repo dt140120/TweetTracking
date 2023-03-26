@@ -68,6 +68,9 @@ twint.run.Search(c)
 tweets = twint.output.tweets_list
 print("--- %s seconds ---" % (time.time() - start_time))
 
+# import twint
+
+
 # c = twint.Config()
 # c.Username = 'dongtran1401'
 # c.Until = ''
@@ -94,19 +97,22 @@ print("--- %s seconds ---" % (time.time() - start_time))
 # print(tweets)
 
 
-# c = twint.Config()
-# c.Search = 'coin'
-# c.Since = None
-# c.Until = None
-# c.Count = True
-# c.Limit = 10
-# c.Replies = False
-# c.Retweets = False
-# c.Store_object = True
-# c.Hide_output = False
-# twint.run.Search(c)
-# tweets = twint.output.tweets_list
-# print(tweets)
+c = twint.Config()
+c.Search = 'Bloomberg Markets'
+c.Since = None
+c.Until = None
+c.Count = True
+c.Limit = 10
+c.Replies = False
+c.Retweets = False
+c.Store_object = True
+c.Hide_output = False
+twint.run.Search(c)
+tweets = twint.output.tweets_list
+for tweet in tweets:
+    print('photos:',tweet.photos)
+    print('source:',tweet.source)
+    print('tweet: ',tweet.tweet)
 
 # import twint
 # from classify.predict_class import classify

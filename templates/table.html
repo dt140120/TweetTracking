@@ -1,14 +1,20 @@
 {% extends "tweets.html" %}
 {% block content_2 %}
     <div class="container mt-5 px-2" id="widthtable">
-        <div class="mb-2 d-flex justify-content-between align-items-center" id="widthtable">
+        <div class="mb-2 d-flex justify-content-between align-items-center" id="widthtable" style="justify-content: flex-end !important;">
             <div class="position-relative">
                 <span class="position-absolute search"><i class="fa fa-search"></i></span>
                 <input class="form-control w-100" placeholder="Search by order#, name..." id="filter-input">
             </div>
             <div class="px-2">
-                <span>Filters <i class="fa fa-angle-down"></i></span>
-                <i class="fa fa-ellipsis-h ms-3"></i>
+                <!-- <span>Filters <i class="fa fa-angle-down"></i></span>
+                <i class="fa fa-ellipsis-h ms-3"></i> -->
+                <button type="button" class="btn btn-primary">
+                    <div style="text-align: center;">
+                        <span>Filters</span>
+                        <!-- <i class="fa fa-ellipsis-h ms-3"></i> -->
+                    </div>
+                </button>
             </div>
         </div>
         <div class="table-responsive" id="widthtable">
@@ -27,8 +33,7 @@
                     <th scope="col" width="10%">is_retweet</th>
                     <th scope="col" width="10%">posted</th>
                     <th scope="col" width="10%">content</th>
-                    <th scope="col" width="10%">images</th>
-                    <th scope="col" width="10%">videos</th>
+                    <!-- <th scope="col" width="10%">images</th> -->
                     <th scope="col" width="10%">URL</th>
                 </tr>
                 </thead>
@@ -47,74 +52,44 @@
                         <td>{{ tweet.retweet }}</td>
                         <td>{{ tweet.datestamp }}</td>
                         <td>
-                            <button class="btn btn-primary" data-toggle="collapse" data-target="#{{ tweet.id }}">View
+                            <!-- <button class="btn btn-primary" data-toggle="collapse" data-target="#{{ tweet.id }}">View
                             </button>
                             <div id={{ tweet.id }} class="collapse">
                                 {{ tweet.tweet }}
-                            </div>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">link</button>
-                            {#                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"#}
-                            {#                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">#}
-                            {#                                <div class="modal-dialog modal-dialog-centered" role="document">#}
-                            {#                                    <div class="modal-content">#}
-                            {#                                        <div class="modal-header">#}
-                            {#                                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>#}
-                            {#                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
-                            {#                                                <span aria-hidden="true">&times;</span>#}
-                            {#                                            </button>#}
-                            {#                                        </div>#}
-                            {#                                        <div class="modal-body">#}
-                            {#                                            ...#}
-                            {#                                        </div>#}
-                            {#                                        <div class="modal-footer">#}
-                            {#                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close#}
-                            {#                                            </button>#}
-                            {#                                            <button type="button" class="btn btn-primary">Save changes</button>#}
-                            {#                                        </div>#}
-                            {#                                    </div>#}
-                            {#                                </div>#}
-                            {#                            </div>#}
-                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            </div> -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                View
+                              </button>
+                              
+                              <!-- Modal -->
+                              <div class="modal fade" id="exampleModalCenter" data-backdrop="false"  tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            ...
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
-                                            </button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div>
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
                                     </div>
+                                    <div class="modal-body">
+                                      {{ tweet.tweet }}
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+                                    </div>
+                                  </div>
                                 </div>
-                            </div>
+                              </div>
                         </td>
-                        <td><a href={{ tweet.quote_url }}>link</a></td>
+                        <!-- <td>
+                            <button type="button" class="btn btn-primary" data-toggle="modal">link</button>
+                        </td> -->
                         <td><a href={{ tweet.link }}>link</a></td>
                     </tr>
                 {% endfor %}
                 {% set tweets = [] %}
                 </tbody>
             </table>
-            {#            <div class="pagination">#}
-            {#                <a href="#">&laquo;</a>#}
-            {#                <a href="#">1</a>#}
-            {#                <a href="#">2</a>#}
-            {#                <a href="#">3</a>#}
-            {#                <a href="#">4</a>#}
-            {#                <a href="#">5</a>#}
-            {#                <a href="#">6</a>#}
-            {#                <a href="#">&raquo;</a>#}
-            {#            </div>#}
         </div>
         <script>
             var widthtable = document.getElementById("widthtable")
