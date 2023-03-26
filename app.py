@@ -10,12 +10,9 @@ from classify.predict_class import classify
 
 app = Flask(__name__)
 
-<<<<<<< HEAD
 user_o = []
 list_pre_o = []
-=======
 label = ["business", "entertainment", "politics", "sport", "tech"]
->>>>>>> f6e3319a5ede3936ba1560690799462b4b09d9ab
 
 # finder_box_tweets
 def get_data_tweets(key, tweets_count, date_from, date_to):
@@ -90,7 +87,6 @@ def multiThread(twitter_username,key, tweest_count ):
     thread1.join()
     thread2.join()
 
-<<<<<<< HEAD
     # return user, list, list_pre
 
 # controller
@@ -99,12 +95,6 @@ def con_get_profiles(twitter_username):
     user_o = []
     user_o= json.loads(get_profile_details(twitter_username=twitter_username, filename=''))
     return user_o
-=======
-# controller
-def con_get_profiles(twitter_username):
-    user = json.loads(get_profile_details(twitter_username=twitter_username, filename=''))
-    return user
->>>>>>> f6e3319a5ede3936ba1560690799462b4b09d9ab
 
 
 # controller
