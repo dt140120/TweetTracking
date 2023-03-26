@@ -8,7 +8,7 @@
         <div class="mb-2 d-flex justify-content-between align-items-center" id="widthtable">
             <div class="position-relative">
                 <span class="position-absolute search"><i class="fa fa-search"></i></span>
-                <input class="form-control w-100" placeholder="Search by order#, name...">
+                <input class="form-control w-100" placeholder="Search by order#, name..." id="filter-input">
             </div>
             <div class="px-2">
                 <span>Filters <i class="fa fa-angle-down"></i></span>
@@ -80,6 +80,27 @@
             var widthtable = document.getElementById("widthtable")
             widthtable.style.width = "200%"
             widthtable.style.fontFamily = "Open Sans, sans-serif"
+        </script>
+        <script>
+            const filterInput = document.getElementById("filter-input");
+            const tableRows = document.querySelectorAll("#data tbody tr");
+    
+            filterInput.addEventListener("keyup", function() {
+                const filterValue = filterInput.value.toLowerCase();
+    
+                tableRows.forEach(row => {
+                    const ID = row.cells[1].innerText.toLowerCase();
+                    const userName = row.cells[2].innerText.toLowerCase();
+                    const name = row.cells[3].innerText.toLowerCase();
+                    const date = row.cells[9].innerText.toLowerCase();
+    
+                    if (ID.includes(filterValue) || userName.includes(filterValue) || name.includes(filterValue) || date.includes(filterValue)) {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
+                });
+            });
         </script>
     </div>
 {% endblock %}

@@ -6,33 +6,43 @@ from twitter_scraper import get_profile_details, scrape_keyword
 app = Flask(__name__)
 
 
-#finder_box_tweets
+# finder_box_tweets
 def get_data_tweets(key, tweets_count, date_from, date_to):
     c = twint.Config()
-    c.Username = key
+    # c.Username = key
+    c.Search = "(from:" + key + ") -filter:links -filter:replies"
+    print(str)
     c.Until = date_to
     c.Since = date_from
     c.Count = True
     c.Limit = tweets_count
+    c.Links = False
     c.Replies = False
     c.Retweets = False
     c.Store_object = True
     c.Hide_output = True
+    if len(twint.output.tweets_list) != 0:
+        twint.output.tweets_list = []
     twint.run.Search(c)
     tweets = twint.output.tweets_list
     return tweets
-#finder_box_topics
+
+
+# finder_box_topics
 def get_data_topics(key, tweets_count, date_from, date_to):
     c = twint.Config()
     c.Search = key
     c.Until = None
     c.Since = None
     c.Count = True
+    c.Links = False
     c.Limit = tweets_count
     c.Replies = False
     c.Retweets = False
     c.Store_object = True
     c.Hide_output = True
+    if len(twint.output.tweets_list) != 0:
+        twint.output.tweets_list = []
     twint.run.Search(c)
     topics = twint.output.tweets_list
     return topics
@@ -79,11 +89,12 @@ def get_tweets():
         date_from = request.form.get('date_from')
         date_to = request.form.get('date_to')
         tweets_count = request.form.get('counts')
+        # print('tweets_count: ',len(tweets_count))
         tweets = con_get_tweets(key, int(tweets_count), date_from, date_to)
-        print(tweets)
+        # print('tweets: ',len(tweets))
         if tweets == []:
             message = 'Không có dữ liệu'
-            return render_template('tweets.html', message = message)
+            return render_template('tweets.html', message=message)
         elif tweets != []:
             return render_template('table.html', tweets=tweets)
     else:
@@ -109,4 +120,6 @@ def get_topics():
 
 
 if __name__ == "__main__":
+    app.debug = True
     app.run()
+    app.run(debug=True)
