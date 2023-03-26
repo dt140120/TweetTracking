@@ -1,7 +1,7 @@
 import json
 import twint
 from flask import Flask, render_template, request
-from twitter_scraper import get_profile_details, scrape_keyword
+from twitter_scraper import get_profile_details
 
 app = Flask(__name__)
 
@@ -11,7 +11,6 @@ def get_data_tweets(key, tweets_count, date_from, date_to):
     c = twint.Config()
     # c.Username = key
     c.Search = "(from:" + key + ") -filter:links -filter:replies"
-    print(str)
     c.Until = date_to
     c.Since = date_from
     c.Count = True
