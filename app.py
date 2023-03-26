@@ -68,8 +68,9 @@ def get_rep_twe(key, tweest_count):
 
 
 # controller
-def con_get_profiles(twitter_username):
-    user = json.loads(get_profile_details(twitter_username=twitter_username, filename=''))
+async def con_get_profiles(twitter_username):
+    user = await json.loads(get_profile_details(twitter_username=twitter_username, filename=''))
+
     return user
 
 
