@@ -1,6 +1,7 @@
 import json
 import threading
 
+import time
 import twint
 from flask import Flask, render_template, request
 from twitter_scraper import get_profile_details
@@ -9,7 +10,12 @@ from classify.predict_class import classify
 
 app = Flask(__name__)
 
+<<<<<<< HEAD
+user_o = []
+list_pre_o = []
+=======
 label = ["business", "entertainment", "politics", "sport", "tech"]
+>>>>>>> f6e3319a5ede3936ba1560690799462b4b09d9ab
 
 # finder_box_tweets
 def get_data_tweets(key, tweets_count, date_from, date_to):
@@ -54,7 +60,8 @@ def get_data_topics(key, tweets_count, date_from, date_to):
 # finder_replies_tweets_15
 def get_rep_twe(key, tweest_count):
     re, tw = 0, 0
-    list = []
+    global list_pre_o
+    list_pre_o = []
     c = twint.Config()
     c.Search = "(from:" + key + ")"
     c.Count = True
@@ -68,16 +75,36 @@ def get_rep_twe(key, tweest_count):
     for re_tw in re_tw_s:
         re += re_tw.replies_count
         tw += re_tw.retweets_count
-    list.append(re, tw)
-    return list
+        list_pre_o.append(classify(re_tw.tweet))
+    # list_o.append(re, tw)
+    return list_pre_o
 
 
+def multiThread(twitter_username,key, tweest_count ):
 
+    thread1 = threading.Thread(target=con_get_profiles, args=(twitter_username,))
+    thread2 = threading.Thread(target=get_rep_twe, args=(key,tweest_count,))
+    thread1.start()
+    thread2.start()
+    # Chờ cho thread kết thúc
+    thread1.join()
+    thread2.join()
 
+<<<<<<< HEAD
+    # return user, list, list_pre
+
+# controller
+def con_get_profiles(twitter_username):
+    global user_o
+    user_o = []
+    user_o= json.loads(get_profile_details(twitter_username=twitter_username, filename=''))
+    return user_o
+=======
 # controller
 def con_get_profiles(twitter_username):
     user = json.loads(get_profile_details(twitter_username=twitter_username, filename=''))
     return user
+>>>>>>> f6e3319a5ede3936ba1560690799462b4b09d9ab
 
 
 # controller
@@ -102,9 +129,13 @@ def main():
 @app.route("/get_profiles", methods=['GET', 'POST'])
 def get_profiles():
     if request.method == 'POST':
-        users = con_get_profiles(request.form.get('username'))
+        # users = con_get_profiles(request.form.get('username'))
+        multiThread(request.form.get('username'),request.form.get('username'),15)
+        # time.sleep(4)
+        print('users:', str(user_o))
+        print('list_pre:', str(list_pre_o))
         # re_tw = get_rep_twe(request.form.get('username'), int(15))
-        return render_template('result.html', users=users)
+        return render_template('result.html', users=user_o)
     else:
         return render_template('profiles.html')
 
