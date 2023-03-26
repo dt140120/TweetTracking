@@ -48,6 +48,7 @@ def get_data_topics(key, tweets_count, date_from, date_to):
 def get_rep_twe(key, tweest_count):
     re, tw = 0, 0
     list = []
+    list_pre = []
     c = twint.Config()
     c.Search = "(from:" + key + ")"
     c.Count = True
@@ -61,16 +62,29 @@ def get_rep_twe(key, tweest_count):
     for re_tw in re_tw_s:
         re += re_tw.replies_count
         tw += re_tw.retweets_count
+        list_pre.append(classify(re_tw.tweet))
     list.append(re, tw)
-    return list
+    return list, list_pre
 
 
+def multiThread(twitter_username,key, tweest_count ):
 
+    thread1 = threading.Thread(target=con_get_profiles, args=(twitter_username,))
+    thread2 = threading.Thread(target=get_rep_twe, args=(key,tweest_count,))
+    thread1.start()
+    thread2.start()
+    # Chờ cho thread kết thúc
+    thread1.join()
+    thread2.join()
+
+    user = thread1.result
+    list, list_pre = thread2.result
+
+    return user, list, list_pre
 
 # controller
-async def con_get_profiles(twitter_username):
-    user = await json.loads(get_profile_details(twitter_username=twitter_username, filename=''))
-
+def con_get_profiles(twitter_username):
+    user = json.loads(get_profile_details(twitter_username=twitter_username, filename=''))
     return user
 
 
