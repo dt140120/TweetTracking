@@ -7,12 +7,19 @@ from flask import Flask, render_template, request
 from twitter_scraper import get_profile_details
 from threading import Thread
 from classify.predict_class import classify
+from collections import defaultdict
 
 app = Flask(__name__)
 
 user_o = []
 list_pre_o = []
 label = ["business", "entertainment", "politics", "sport", "tech"]
+
+def frequencies(lst):
+    freq = defaultdict(int)
+    for val in lst:
+        freq[val] += 1
+    return dict(freq)
 
 # finder_box_tweets
 def get_data_tweets(key, tweets_count, date_from, date_to):
@@ -125,6 +132,7 @@ def get_profiles():
         print('users:', str(user_o))
         print('list_pre:', str(list_pre_o))
         # re_tw = get_rep_twe(request.form.get('username'), int(15))
+        print('dict:',frequencies(list_pre_o))
         return render_template('result.html', users=user_o)
     else:
         return render_template('profiles.html')
