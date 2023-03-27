@@ -79,7 +79,7 @@ def get_rep_twe(key, tweest_count):
     for re_tw in re_tw_s:
         re += re_tw.replies_count
         tw += re_tw.retweets_count
-        list_pre_o.append(classify(re_tw.tweet))
+        list_pre_o.append(label[classify(re_tw.tweet)])
     # list_o.append(re, tw)
     return list_pre_o
 
@@ -127,13 +127,14 @@ def main():
 def get_profiles():
     if request.method == 'POST':
         # users = con_get_profiles(request.form.get('username'))
-        multiThread(request.form.get('username'),request.form.get('username'),15)
+        multiThread(request.form.get('username'),request.form.get('username'),10)
         # time.sleep(4)
         print('users:', str(user_o))
         print('list_pre:', str(list_pre_o))
         # re_tw = get_rep_twe(request.form.get('username'), int(15))
+        dict_o = frequencies(list_pre_o)
         print('dict:',frequencies(list_pre_o))
-        return render_template('result.html', users=user_o)
+        return render_template('result.html', users=user_o, dict_o=dict_o)
     else:
         return render_template('profiles.html')
 
