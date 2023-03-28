@@ -110,9 +110,9 @@ c.Hide_output = False
 twint.run.Search(c)
 tweets = twint.output.tweets_list
 for tweet in tweets:
-    print('photos:',tweet.photos)
-    print('source:',tweet.source)
-    print('tweet: ',tweet.tweet)
+    print('photos:', tweet.photos)
+    print('source:', tweet.source)
+    print('tweet: ', tweet.tweet)
 
 # import twint
 # from classify.predict_class import classify

@@ -27,11 +27,16 @@ def get_data_tweets(key, tweets_count, date_from, date_to):
     c = twint.Config()
     # c.Username = key
     c.Search = "(from:" + key + ") -filter:links -filter:replies"
+    # c.Search = "(from:" + "elonmusk" + ") until:2023-02-01 since:2023-01-01 -filter:links -filter:replies"
     c.Until = date_to
     c.Since = date_from
     c.Count = True
     c.Limit = tweets_count
     c.Store_object = True
+
+    c.Store_csv = True
+    c.Output = "tweets_save/data.csv"
+
     c.Hide_output = True
     if len(twint.output.tweets_list) != 0:
         twint.output.tweets_list = []
@@ -52,6 +57,10 @@ def get_data_topics(key, tweets_count, date_from, date_to):
     c.Count = True
     c.Limit = tweets_count
     c.Store_object = True
+
+    c.Store_csv = True
+    c.Output = "topics_save/data.csv"
+
     c.Hide_output = True
     if len(twint.output.tweets_list) != 0:
         twint.output.tweets_list = []
