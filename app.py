@@ -15,11 +15,13 @@ user_o = []
 list_pre_o = []
 label = ["business", "entertainment", "politics", "sport", "tech"]
 
+
 def frequencies(lst):
     freq = defaultdict(int)
     for val in lst:
         freq[val] += 1
     return dict(freq)
+
 
 # finder_box_tweets
 def get_data_tweets(key, tweets_count, date_from, date_to):
@@ -70,6 +72,7 @@ def get_data_topics(key, tweets_count, date_from, date_to):
         list_pre.append(label[classify(topic.tweet)])
     return topics, list_pre
 
+
 # finder_replies_tweets_15
 def get_rep_twe(key, tweest_count):
     re, tw = 0, 0
@@ -93,10 +96,9 @@ def get_rep_twe(key, tweest_count):
     return list_pre_o
 
 
-def multiThread(twitter_username,key, tweest_count ):
-
+def multiThread(twitter_username, key, tweest_count):
     thread1 = threading.Thread(target=con_get_profiles, args=(twitter_username,))
-    thread2 = threading.Thread(target=get_rep_twe, args=(key,tweest_count,))
+    thread2 = threading.Thread(target=get_rep_twe, args=(key, tweest_count,))
     thread1.start()
     thread2.start()
     # Chờ cho thread kết thúc
@@ -105,11 +107,12 @@ def multiThread(twitter_username,key, tweest_count ):
 
     # return user, list, list_pre
 
+
 # controller
 def con_get_profiles(twitter_username):
     global user_o
     user_o = []
-    user_o= json.loads(get_profile_details(twitter_username=twitter_username, filename=''))
+    user_o = json.loads(get_profile_details(twitter_username=twitter_username, filename=''))
     return user_o
 
 
@@ -136,13 +139,13 @@ def main():
 def get_profiles():
     if request.method == 'POST':
         # users = con_get_profiles(request.form.get('username'))
-        multiThread(request.form.get('username'),request.form.get('username'),10)
+        multiThread(request.form.get('username'), request.form.get('username'), 10)
         # time.sleep(4)
         print('users:', str(user_o))
         print('list_pre:', str(list_pre_o))
         # re_tw = get_rep_twe(request.form.get('username'), int(15))
         dict_o = frequencies(list_pre_o)
-        print('dict:',frequencies(list_pre_o))
+        print('dict:', frequencies(list_pre_o))
         return render_template('result.html', users=user_o, dict_o=dict_o)
     else:
         return render_template('profiles.html')
