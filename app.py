@@ -105,7 +105,7 @@ def multiThread(twitter_username, key, tweest_count):
     thread1.join()
     thread2.join()
 
-    # return user, list, list_pre
+
 
 
 # controller
@@ -145,8 +145,12 @@ def get_profiles():
         print('list_pre:', str(list_pre_o))
         # re_tw = get_rep_twe(request.form.get('username'), int(15))
         dict_o = frequencies(list_pre_o)
+        data_array = [['Topic', 'occurs per topic']]
+        for category, count in dict_o.items():
+            data_array.append([category.capitalize(), count])
         print('dict:', frequencies(list_pre_o))
-        return render_template('result.html', users=user_o, dict_o=dict_o)
+        print('data_array:', data_array)
+        return render_template('result.html', users=user_o, data_array=data_array)
     else:
         return render_template('profiles.html')
 
@@ -158,10 +162,8 @@ def get_tweets():
         date_from = request.form.get('date_from')
         date_to = request.form.get('date_to')
         tweets_count = request.form.get('counts')
-        # print('tweets_count: ',len(tweets_count))
         tweets, list_pre = con_get_tweets(key, int(tweets_count), date_from, date_to)
         print(list_pre)
-        # print('tweets: ',len(tweets))
         if tweets == []:
             message = 'Không có dữ liệu'
             return render_template('tweets.html', message=message)
