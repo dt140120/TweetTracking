@@ -1,7 +1,6 @@
 import json
 import threading
 
-import time
 import twint
 from flask import Flask, render_template, request
 from twitter_scraper import get_profile_details
@@ -27,9 +26,7 @@ def frequencies(lst):
 def get_data_tweets(key, tweets_count, date_from, date_to):
     list_pre = []
     c = twint.Config()
-    # c.Username = key
     c.Search = "(from:" + key + ") -filter:links -filter:replies"
-    # c.Search = "(from:" + "elonmusk" + ") until:2023-02-01 since:2023-01-01 -filter:links -filter:replies"
     c.Until = date_to
     c.Since = date_from
     c.Count = True
@@ -92,7 +89,6 @@ def get_rep_twe(key, tweest_count):
         re += re_tw.replies_count
         tw += re_tw.retweets_count
         list_pre_o.append(label[classify(re_tw.tweet)])
-    # list_o.append(re, tw)
     return list_pre_o
 
 
@@ -106,8 +102,6 @@ def multiThread(twitter_username, key, tweest_count):
     thread2.join()
 
 
-
-
 # controller
 def con_get_profiles(twitter_username):
     global user_o
@@ -118,7 +112,6 @@ def con_get_profiles(twitter_username):
 
 # controller
 def con_get_tweets(key, tweets_count, date_from, date_to):
-    # tweets = json.loads(scrape_keyword(keyword=key, browser="firefox", tweets_count=tweets_count, until=date_to, since=date_from, output_format="json", filename="", headless=False))
     tweets = get_data_tweets(key, tweets_count, date_from, date_to)
     return tweets
 
@@ -138,12 +131,11 @@ def main():
 @app.route("/get_profiles", methods=['GET', 'POST'])
 def get_profiles():
     if request.method == 'POST':
-        # users = con_get_profiles(request.form.get('username'))
+        # lấy 10 bài đăng gần nhất để đánh giá
         multiThread(request.form.get('username'), request.form.get('username'), 10)
         # time.sleep(4)
         print('users:', str(user_o))
         print('list_pre:', str(list_pre_o))
-        # re_tw = get_rep_twe(request.form.get('username'), int(15))
         dict_o = frequencies(list_pre_o)
         data_array = [['Topic', 'occurs per topic']]
         for category, count in dict_o.items():
