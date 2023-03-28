@@ -4,7 +4,7 @@ import string
 import math
 import random
 
-DATASET_DIR = 'classify/bbc'
+DATASET_DIR = 'classify/data'
 STOPWORDS_FILE = 'classify/stopwords-en.txt'
 NUM_CLASSES = 5
 
