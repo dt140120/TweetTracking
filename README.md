@@ -6,6 +6,8 @@
 
 ## Requirements
 - requirements.txt
+- python 3.8
+- virtualenv 20.0.17
 
 ## Overview
 - Thu thập dữ liệu
@@ -15,9 +17,10 @@
 
 ## Install
 ```bash
-git clone https://github.com/dt140120/Flask_twitter.git
-cd Flask_twitter
-pip3 install . -r requirements.txt
+python3 -m venv Flask_twitter
+(Flask_twitter) git clone https://github.com/dt140120/Flask_twitter.git
+(Flask_twitter) cd Flask_twitter
+(Flask_twitter) pip3 install . -r requirements.txt
 ```
 
 ## Run
