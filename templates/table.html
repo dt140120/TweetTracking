@@ -8,12 +8,9 @@
                 <input class="form-control w-100" placeholder="Search by order#, name..." id="filter-input">
             </div>
             <div class="px-2">
-                <!-- <span>Filters <i class="fa fa-angle-down"></i></span>
-                <i class="fa fa-ellipsis-h ms-3"></i> -->
                 <button type="button" class="btn btn-primary">
                     <div style="text-align: center;">
                         <span>Filters</span>
-                        <!-- <i class="fa fa-ellipsis-h ms-3"></i> -->
                     </div>
                 </button>
             </div>
@@ -34,7 +31,6 @@
                     <th scope="col" width="10%">is_retweet</th>
                     <th scope="col" width="10%">posted</th>
                     <th scope="col" width="10%">content</th>
-                    <!-- <th scope="col" width="10%">images</th> -->
                     <th scope="col" width="10%">URL</th>
                 </tr>
                 </thead>
@@ -69,7 +65,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLongTitle">
-                                                {{ list_pre[loop.index] }}
+                                                {{ list_pre[loop.index - 1] }}
                                             </h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>

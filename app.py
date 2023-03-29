@@ -4,7 +4,6 @@ import threading
 import twint
 from flask import Flask, render_template, request
 from twitter_scraper import get_profile_details
-from threading import Thread
 from classify.predict_class import classify
 from collections import defaultdict
 
@@ -13,6 +12,7 @@ app = Flask(__name__)
 user_o = []
 list_pre_o = []
 label = ["business", "entertainment", "politics", "sport", "tech"]
+
 
 # fre
 def frequencies(lst):
@@ -33,7 +33,7 @@ def get_data_tweets(key, tweets_count, date_from, date_to):
     c.Limit = tweets_count
     c.Store_object = True
     c.Store_csv = True
-    c.Output = "tweets_save/data.csv"
+    c.Output = "tweets_save/tweets.csv"
     c.Hide_output = True
     if len(twint.output.tweets_list) != 0:
         twint.output.tweets_list = []
@@ -54,10 +54,8 @@ def get_data_topics(key, tweets_count, date_from, date_to):
     c.Count = True
     c.Limit = tweets_count
     c.Store_object = True
-
     c.Store_csv = True
-    c.Output = "topics_save/data.csv"
-
+    c.Output = "topics_save/topics.csv"
     c.Hide_output = True
     if len(twint.output.tweets_list) != 0:
         twint.output.tweets_list = []
@@ -68,7 +66,7 @@ def get_data_topics(key, tweets_count, date_from, date_to):
     return topics, list_pre
 
 
-# finder_replies_tweets_15
+# tìm kiếm 10 bài đăng gần nhất và tiến hành phân loại
 def get_rep_twe(key, tweest_count):
     re, tw = 0, 0
     global list_pre_o
@@ -88,6 +86,7 @@ def get_rep_twe(key, tweest_count):
         tw += re_tw.retweets_count
         list_pre_o.append(label[classify(re_tw.tweet)])
     return list_pre_o
+
 
 # lấy dữ liệu đa luồng
 def multiThread(twitter_username, key, tweest_count):
@@ -125,13 +124,12 @@ def con_get_topics(key, tweets_count, date_from, date_to):
 def main():
     return render_template('index.html')
 
-
+# route
 @app.route("/get_profiles", methods=['GET', 'POST'])
 def get_profiles():
     if request.method == 'POST':
         # lấy 10 bài đăng gần nhất để đánh giá
         multiThread(request.form.get('username'), request.form.get('username'), 10)
-        # time.sleep(4)
         print('users:', str(user_o))
         print('list_pre:', str(list_pre_o))
         dict_o = frequencies(list_pre_o)
@@ -144,7 +142,7 @@ def get_profiles():
     else:
         return render_template('profiles.html')
 
-
+# route
 @app.route("/get_tweets", methods=['GET', 'POST'])
 def get_tweets():
     if request.method == 'POST':
@@ -162,7 +160,7 @@ def get_tweets():
     else:
         return render_template('tweets.html')
 
-
+# route
 @app.route("/get_topic", methods=['GET', 'POST'])
 def get_topics():
     if request.method == 'POST':
