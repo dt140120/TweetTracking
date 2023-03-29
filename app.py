@@ -14,7 +14,7 @@ user_o = []
 list_pre_o = []
 label = ["business", "entertainment", "politics", "sport", "tech"]
 
-
+# fre
 def frequencies(lst):
     freq = defaultdict(int)
     for val in lst:
@@ -32,10 +32,8 @@ def get_data_tweets(key, tweets_count, date_from, date_to):
     c.Count = True
     c.Limit = tweets_count
     c.Store_object = True
-
     c.Store_csv = True
     c.Output = "tweets_save/data.csv"
-
     c.Hide_output = True
     if len(twint.output.tweets_list) != 0:
         twint.output.tweets_list = []
@@ -91,7 +89,7 @@ def get_rep_twe(key, tweest_count):
         list_pre_o.append(label[classify(re_tw.tweet)])
     return list_pre_o
 
-
+# lấy dữ liệu đa luồng
 def multiThread(twitter_username, key, tweest_count):
     thread1 = threading.Thread(target=con_get_profiles, args=(twitter_username,))
     thread2 = threading.Thread(target=get_rep_twe, args=(key, tweest_count,))
