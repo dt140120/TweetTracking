@@ -1,7 +1,7 @@
 ## Hệ thống crawl data và phân loại tweets nền tảng twitter
 
-![2](/home/dongtran/Pictures/Screenshot from 2023-03-29 07-46-40.png)
-![3](/home/dongtran/Pictures/Screenshot from 2023-03-29 07-49-15.png)
+![Screenshot from 2023-03-29 07-46-40](https://user-images.githubusercontent.com/79502986/228400220-23f545e0-a1d5-49c6-b34a-fa207cd30018.png)
+![Screenshot from 2023-03-29 07-49-15](https://user-images.githubusercontent.com/79502986/228400245-8befdb8e-d51d-426c-83a1-4be07bd9c684.png)
 
 ## Requirements
 - requirements.txt
