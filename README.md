@@ -17,10 +17,9 @@
 
 ## Install
 ```bash
-python3 -m venv Flask_twitter
-(Flask_twitter) git clone https://github.com/dt140120/Flask_twitter.git
-(Flask_twitter) cd Flask_twitter
-(Flask_twitter) pip3 install . -r requirements.txt
+git clone https://github.com/dt140120/Flask_twitter.git
+cd Flask_twitter
+pip3 install . -r requirements.txt
 ```
 
 ## Run
