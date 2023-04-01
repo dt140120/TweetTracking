@@ -1,11 +1,9 @@
 import json
 import threading
 
-import time
 import twint
 from flask import Flask, render_template, request
 from twitter_scraper import get_profile_details
-from threading import Thread
 from classify.predict_class import classify
 from collections import defaultdict
 
@@ -15,23 +13,27 @@ user_o = []
 list_pre_o = []
 label = ["business", "entertainment", "politics", "sport", "tech"]
 
+
+# fre
 def frequencies(lst):
     freq = defaultdict(int)
     for val in lst:
         freq[val] += 1
     return dict(freq)
 
+
 # finder_box_tweets
 def get_data_tweets(key, tweets_count, date_from, date_to):
     list_pre = []
     c = twint.Config()
-    # c.Username = key
     c.Search = "(from:" + key + ") -filter:links -filter:replies"
     c.Until = date_to
     c.Since = date_from
     c.Count = True
     c.Limit = tweets_count
     c.Store_object = True
+    c.Store_csv = True
+    c.Output = "tweets_save/tweets.csv"
     c.Hide_output = True
     if len(twint.output.tweets_list) != 0:
         twint.output.tweets_list = []
@@ -52,6 +54,8 @@ def get_data_topics(key, tweets_count, date_from, date_to):
     c.Count = True
     c.Limit = tweets_count
     c.Store_object = True
+    c.Store_csv = True
+    c.Output = "topics_save/topics.csv"
     c.Hide_output = True
     if len(twint.output.tweets_list) != 0:
         twint.output.tweets_list = []
@@ -61,7 +65,8 @@ def get_data_topics(key, tweets_count, date_from, date_to):
         list_pre.append(label[classify(topic.tweet)])
     return topics, list_pre
 
-# finder_replies_tweets_15
+
+# tìm kiếm 10 bài đăng gần nhất và tiến hành phân loại
 def get_rep_twe(key, tweest_count):
     re, tw = 0, 0
     global list_pre_o
@@ -80,33 +85,30 @@ def get_rep_twe(key, tweest_count):
         re += re_tw.replies_count
         tw += re_tw.retweets_count
         list_pre_o.append(label[classify(re_tw.tweet)])
-    # list_o.append(re, tw)
     return list_pre_o
 
 
-def multiThread(twitter_username,key, tweest_count ):
-
+# lấy dữ liệu đa luồng
+def multiThread(twitter_username, key, tweest_count):
     thread1 = threading.Thread(target=con_get_profiles, args=(twitter_username,))
-    thread2 = threading.Thread(target=get_rep_twe, args=(key,tweest_count,))
+    thread2 = threading.Thread(target=get_rep_twe, args=(key, tweest_count,))
     thread1.start()
     thread2.start()
     # Chờ cho thread kết thúc
     thread1.join()
     thread2.join()
 
-    # return user, list, list_pre
 
 # controller
 def con_get_profiles(twitter_username):
     global user_o
     user_o = []
-    user_o= json.loads(get_profile_details(twitter_username=twitter_username, filename=''))
+    user_o = json.loads(get_profile_details(twitter_username=twitter_username, filename=''))
     return user_o
 
 
 # controller
 def con_get_tweets(key, tweets_count, date_from, date_to):
-    # tweets = json.loads(scrape_keyword(keyword=key, browser="firefox", tweets_count=tweets_count, until=date_to, since=date_from, output_format="json", filename="", headless=False))
     tweets = get_data_tweets(key, tweets_count, date_from, date_to)
     return tweets
 
@@ -122,23 +124,25 @@ def con_get_topics(key, tweets_count, date_from, date_to):
 def main():
     return render_template('index.html')
 
-
+# route
 @app.route("/get_profiles", methods=['GET', 'POST'])
 def get_profiles():
     if request.method == 'POST':
-        # users = con_get_profiles(request.form.get('username'))
-        multiThread(request.form.get('username'),request.form.get('username'),10)
-        # time.sleep(4)
+        # lấy 10 bài đăng gần nhất để đánh giá
+        multiThread(request.form.get('username'), request.form.get('username'), 10)
         print('users:', str(user_o))
         print('list_pre:', str(list_pre_o))
-        # re_tw = get_rep_twe(request.form.get('username'), int(15))
         dict_o = frequencies(list_pre_o)
-        print('dict:',frequencies(list_pre_o))
-        return render_template('result.html', users=user_o, dict_o=dict_o)
+        data_array = [['Topic', 'occurs per topic']]
+        for category, count in dict_o.items():
+            data_array.append([category.capitalize(), count])
+        print('dict:', frequencies(list_pre_o))
+        print('data_array:', data_array)
+        return render_template('result.html', users=user_o, data_array=data_array)
     else:
         return render_template('profiles.html')
 
-
+# route
 @app.route("/get_tweets", methods=['GET', 'POST'])
 def get_tweets():
     if request.method == 'POST':
@@ -146,10 +150,8 @@ def get_tweets():
         date_from = request.form.get('date_from')
         date_to = request.form.get('date_to')
         tweets_count = request.form.get('counts')
-        # print('tweets_count: ',len(tweets_count))
         tweets, list_pre = con_get_tweets(key, int(tweets_count), date_from, date_to)
         print(list_pre)
-        # print('tweets: ',len(tweets))
         if tweets == []:
             message = 'Không có dữ liệu'
             return render_template('tweets.html', message=message)
@@ -158,7 +160,7 @@ def get_tweets():
     else:
         return render_template('tweets.html')
 
-
+# route
 @app.route("/get_topic", methods=['GET', 'POST'])
 def get_topics():
     if request.method == 'POST':

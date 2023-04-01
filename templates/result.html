@@ -7,16 +7,17 @@
                     <div class="col">
                         <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
                             <ol class="breadcrumb mb-0">
-                                <p class="text-uppercase font-weight-bold" style="margin-bottom: 0;">User Profile</p>
+                                <p class="text-uppercase font-weight-bold" style="margin-bottom: 0;">Thông Tin Người Dùng</p>
                             </ol>
                         </nav>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-4">
-                        <div class="card mb-4" style="height: 311px;">
+                        <div class="card mb-4" style="height: 240px;">
                             <div class="card-body text-center">
-                                <img src={{ users['profile_image_url_https'] }} alt="avatar" class="rounded-circle img-fluid" style="width: 80px;">
+                                <img src={{ users['profile_image_url_https'] }} alt="avatar"
+                                     class="rounded-circle img-fluid" style="width: 80px;">
                                 <h5 class="my-3">{{ users['screen_name'] }}</h5>
                                 <p class="text-muted mb-1">Status: {{ users['statuses_count'] }}</p>
                                 <p class="text-muted mb-4">{{ users['location'] }}</p>
@@ -34,7 +35,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm-1">
-                                        <img src={{ url_for('static', filename='/img/name.png') }} width="25" >
+                                        <img src={{ url_for('static', filename='/img/name.png') }} width="25">
                                     </div>
                                     <div class="col-sm-2">
                                         <p class="mb-0">Full Name</p>
@@ -46,7 +47,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-1">
-                                        <img src={{ url_for('static', filename='/img/id.png') }} width="25" >
+                                        <img src={{ url_for('static', filename='/img/id.png') }} width="25">
                                     </div>
                                     <div class="col-sm-2">
                                         <p class="mb-0">ID</p>
@@ -58,7 +59,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-1">
-                                        <img src={{ url_for('static', filename='/img/date.png') }} width="25" >
+                                        <img src={{ url_for('static', filename='/img/date.png') }} width="25">
                                     </div>
                                     <div class="col-sm-2">
                                         <p class="mb-0">Date join</p>
@@ -70,7 +71,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-1">
-                                        <img src={{ url_for('static', filename='/img/friend.png') }} width="25" >
+                                        <img src={{ url_for('static', filename='/img/friend.png') }} width="25">
                                     </div>
                                     <div class="col-sm-2">
                                         <p class="mb-0">Friend</p>
@@ -79,7 +80,7 @@
                                         <p class="text-muted mb-0">{{ users["friends_count"] }}</p>
                                     </div>
                                     <div class="col-sm-1">
-                                        <img src={{ url_for('static', filename='/img/follow.png') }} width="25" >
+                                        <img src={{ url_for('static', filename='/img/follow.png') }} width="25">
                                     </div>
                                     <div class="col-sm-2">
                                         <p class="mb-0">Tweet liked</p>
@@ -91,7 +92,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-1">
-                                        <img src={{ url_for('static', filename='/img/follower.png') }} width="25" >
+                                        <img src={{ url_for('static', filename='/img/follower.png') }} width="25">
                                     </div>
                                     <div class="col-sm-2">
                                         <p class="mb-0">Follower</p>
@@ -100,7 +101,7 @@
                                         <p class="text-muted mb-0">{{ users["followers_count"] }}</p>
                                     </div>
                                     <div class="col-sm-1">
-                                        <img src={{ url_for('static', filename='/img/public.png') }} width="25" >
+                                        <img src={{ url_for('static', filename='/img/public.png') }} width="25">
                                     </div>
                                     <div class="col-sm-2">
                                         <p class="mb-0">List Public</p>
@@ -118,31 +119,31 @@
                                         <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span>
                                             Chart
                                         </p>
-                                        <p class="mb-1" style="font-size: .77rem;">Web Design</p>
+                                        <p class="mb-1" style="font-size: .77rem;">Friend</p>
                                         <div class="progress rounded" style="height: 5px;">
                                             <div class="progress-bar" role="progressbar" style="width: 80%"
                                                  aria-valuenow="80"
                                                  aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
-                                        <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
+                                        <p class="mt-4 mb-1" style="font-size: .77rem;">Tweet liked</p>
                                         <div class="progress rounded" style="height: 5px;">
                                             <div class="progress-bar" role="progressbar" style="width: 72%"
                                                  aria-valuenow="72"
                                                  aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
-                                        <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
+                                        <p class="mt-4 mb-1" style="font-size: .77rem;">Follower</p>
                                         <div class="progress rounded" style="height: 5px;">
                                             <div class="progress-bar" role="progressbar" style="width: 89%"
                                                  aria-valuenow="89"
                                                  aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
-                                        <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
+                                        <p class="mt-4 mb-1" style="font-size: .77rem;">List Public</p>
                                         <div class="progress rounded" style="height: 5px;">
                                             <div class="progress-bar" role="progressbar" style="width: 55%"
                                                  aria-valuenow="55"
                                                  aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
-                                        <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
+                                        <p class="mt-4 mb-1" style="font-size: .77rem;">Status</p>
                                         <div class="progress rounded mb-2" style="height: 5px;">
                                             <div class="progress-bar" role="progressbar" style="width: 66%"
                                                  aria-valuenow="66"
@@ -157,31 +158,31 @@
                                         <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span>
                                             Predict
                                         </p>
-                                        <p class="mb-1" style="font-size: .77rem;">Web Design</p>
+                                        <p class="mb-1" style="font-size: .77rem;">Entertainment</p>
                                         <div class="progress rounded" style="height: 5px;">
                                             <div class="progress-bar" role="progressbar" style="width: 80%"
                                                  aria-valuenow="80"
                                                  aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
-                                        <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
+                                        <p class="mt-4 mb-1" style="font-size: .77rem;">Politics</p>
                                         <div class="progress rounded" style="height: 5px;">
                                             <div class="progress-bar" role="progressbar" style="width: 72%"
                                                  aria-valuenow="72"
                                                  aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
-                                        <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
+                                        <p class="mt-4 mb-1" style="font-size: .77rem;">Sport</p>
                                         <div class="progress rounded" style="height: 5px;">
                                             <div class="progress-bar" role="progressbar" style="width: 89%"
                                                  aria-valuenow="89"
                                                  aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
-                                        <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
+                                        <p class="mt-4 mb-1" style="font-size: .77rem;">Business</p>
                                         <div class="progress rounded" style="height: 5px;">
                                             <div class="progress-bar" role="progressbar" style="width: 55%"
                                                  aria-valuenow="55"
                                                  aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
-                                        <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
+                                        <p class="mt-4 mb-1" style="font-size: .77rem;">Tech</p>
                                         <div class="progress rounded mb-2" style="height: 5px;">
                                             <div class="progress-bar" role="progressbar" style="width: 66%"
                                                  aria-valuenow="66"
@@ -196,31 +197,15 @@
             </div>
         </section>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
         <script type="text/javascript">
-        // Load google charts
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
-
-        // Draw the chart and set the chart values
-        function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-        ['Topic', 'occurs per topic'],
-        ['business', 8],
-        ['entertain', 2],
-        ['politics', 4],
-        ['sport', 2],
-        ['tech', 8]
-        // {dict_o}
-        ]);
-
-        // Optional; add a title and set the width and height of the chart
-        var options = {'title':'My Topics', 'width':400, 'height':400};
-
-        // Display the chart inside the <div> element with id="piechart"
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-        chart.draw(data, options);
-        }
+            google.charts.load('current', {'packages': ['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable({{ data_array|safe }});
+                var options = {'title': 'My Topics', 'width': 400, 'height': 400};
+                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                chart.draw(data, options);
+            }
         </script>
         <script>
             var widthtable = document.getElementById("widthtable")

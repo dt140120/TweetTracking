@@ -4,7 +4,7 @@ import string
 import math
 import random
 
-DATASET_DIR = 'classify/bbc'
+DATASET_DIR = 'classify/data'
 STOPWORDS_FILE = 'classify/stopwords-en.txt'
 NUM_CLASSES = 5
 
@@ -150,11 +150,11 @@ class TextClassificator(object):
 
                 # get returns 0.0 if the value is not found -> add Laplace smoothing
                 log_w_given_business = math.log((self.bow['business'].get(word, 0.0) + 1) / (
-                            self.num_texts['business'] + len(self.global_vocabulary)))
+                        self.num_texts['business'] + len(self.global_vocabulary)))
                 log_w_given_entertainment = math.log((self.bow['entertainment'].get(word, 0.0) + 1) / (
-                            self.num_texts['entertainment'] + len(self.global_vocabulary)))
+                        self.num_texts['entertainment'] + len(self.global_vocabulary)))
                 log_w_given_politics = math.log((self.bow['politics'].get(word, 0.0) + 1) / (
-                            self.num_texts['politics'] + len(self.global_vocabulary)))
+                        self.num_texts['politics'] + len(self.global_vocabulary)))
                 log_w_given_sport = math.log(
                     (self.bow['sport'].get(word, 0.0) + 1) / (self.num_texts['sport'] + len(self.global_vocabulary)))
                 log_w_given_tech = math.log(
@@ -185,36 +185,7 @@ class TextClassificator(object):
         return result
 
 
-
-
-# if __name__ == "__main__":
-#
-#     X, y = get_dataset(DATASET_DIR)
-#
-#     aux = list(zip(X, y))
-#     random.shuffle(aux)
-#     X, y = zip(*aux)
-#
-#     NBC = TextClassificator()
-#     NBC.train(X[int(len(X) / NUM_CLASSES):], y[int(len(X) / NUM_CLASSES):])
-#
-#     str = input("Nhạp:")
-#     pred = NBC.predict(str)
-#     true = y[:int(len(X) / NUM_CLASSES)]
-#
-#     accuracy_1 = 0
-#     k = 0
-#     for item in true:
-#         accuracy = max(accuracy_1, sum(1 for i in range(1, len(pred)) if pred[i] == item) / float(len(pred)))
-#         if accuracy > accuracy_1:
-#             k = item
-#             p = accuracy
-#
-#     print(k)
-#     print("{0:.4f}".format(p))
-
 def classify(str):
-
     X, y = get_dataset(DATASET_DIR)
 
     aux = list(zip(X, y))
