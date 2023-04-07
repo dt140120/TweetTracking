@@ -8,6 +8,7 @@
 - requirements.txt
 - python 3.8
 - virtualenv 20.0.17
+- Flask 2.2.3
 
 ## Overview
 - Thu thập dữ liệu
