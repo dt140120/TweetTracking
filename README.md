@@ -20,7 +20,7 @@
 ```bash
 git clone https://github.com/dt140120/Flask_twitter.git
 cd Flask_twitter
-pip3 install . -r requirements.txt
+pip3 install  -r requirements.txt
 ```
 
 ## Run
