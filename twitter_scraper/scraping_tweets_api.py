@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from bs4.element import Tag
 
+# find data
 def praseHTML(key, since, until, num):
     if num == 1:
         # if since == '' and until != '':

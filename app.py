@@ -8,13 +8,11 @@ from twitter_scraper import praseHTML
 from classify.predict_class import classify
 from collections import defaultdict
 
-
 app = Flask(__name__)
 
 user_o = []
 list_pre_o = []
 label = ["business", "entertainment", "politics", "sport", "tech"]
-
 
 # frequency
 def frequencies(lst):
@@ -119,6 +117,7 @@ def get_tweets():
         date_to = request.form.get('date_to')
         tweets_count = request.form.get('counts')
         tweets, list_pre = con_get_tweets(key, int(tweets_count), date_from, date_to)
+        print(tweets)
         print(list_pre)
         if tweets == []:
             message = 'Không có dữ liệu'
