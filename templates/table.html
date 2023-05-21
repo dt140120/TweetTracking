@@ -1,4 +1,8 @@
-{% extends "tweets.html" %}
+{% if key == 1 %}
+    {% extends "tweets.html" %}
+{% else %}
+    {% extends "topics.html" %}
+{% endif %}
 {% block content_2 %}
     <div class="container mt-5 px-2" id="widthtable">
         <div class="mb-2 d-flex justify-content-between align-items-center" id="widthtable"

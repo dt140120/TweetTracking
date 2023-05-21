@@ -124,7 +124,7 @@ def get_tweets():
             message = 'Không có dữ liệu'
             return render_template('tweets.html', message=message)
         elif tweets != []:
-            return render_template('table.html', tweets=tweets, list_pre=list_pre)
+            return render_template('table.html', tweets=tweets, list_pre=list_pre, key=1)
     else:
         return render_template('tweets.html')
 
@@ -143,7 +143,7 @@ def get_topics():
             message = 'Không có dữ liệu'
             return render_template('topics.html.html', message=message)
         elif topics != []:
-            return render_template('table.html', tweets=topics, list_pre=list_pre)
+            return render_template('table.html', tweets=topics, list_pre=list_pre, key=2)
     else:
         return render_template('topics.html')
 
