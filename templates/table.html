@@ -5,7 +5,7 @@
              style="justify-content: flex-end !important;">
             <div class="position-relative">
                 <span class="position-absolute search"><i class="fa fa-search"></i></span>
-                <input class="form-control w-100" placeholder="Search by order#, name..." id="filter-input">
+                <input class="form-control w-100" placeholder="Tìm theo ID, tên ..." id="filter-input">
             </div>
             <div class="px-2">
                 <button type="button" class="btn btn-primary">
@@ -26,7 +26,7 @@
                     <th scope="col" width="10%">name</th>
                     <th scope="col" width="10%">profile_pic</th>
                     <th scope="col" width="10%">replies</th>
-                    <th scope="col" width="10%">retweets</th>
+                    <th scope="col" width="10%">quotes</th>
                     <th scope="col" width="8%">likes</th>
                     <th scope="col" width="10%">is_retweet</th>
                     <th scope="col" width="10%">posted</th>
@@ -42,17 +42,18 @@
                         <td>{{ tweet.username }}</td>
                         <td>{{ tweet.name }}</td>
                         <td style="text-align:center; vertical-align:middle;"><img
-                                src="{{ url_for('static', filename='/img/icon_profile.png') }}" width="25"></td>
-                        <td>{{ tweet.replies_count }}</td>
-                        <td>{{ tweet.retweets_count }}</td>
-                        <td>{{ tweet.likes_count }}</td>
+{#                                src="{{ url_for('static', filename='/img/icon_profile.png') }}" width="25"></td>#}
+                                src="{{ tweet.avatar }}" width="25"></td>
+                        <td>{{ tweet.comment }}</td>
+                        <td>{{ tweet.quote }}</td>
+                        <td>{{ tweet.heart }}</td>
                         <td>{{ tweet.retweet }}</td>
-                        <td>{{ tweet.datestamp }}</td>
+                        <td>{{ tweet.date.replace('Â', '') }}</td>
                         <td>
                             <!-- <button class="btn btn-primary" data-toggle="collapse" data-target="#{{ tweet.id }}">View
                             </button>
                             <div id={{ tweet.id }} class="collapse">
-                                {{ tweet.tweet }}
+                                {{ tweet.content }}
                             </div> -->
                             <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#{{ tweet.id }}">
@@ -72,7 +73,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            {{ tweet.tweet }}
+                                            {{ tweet.content }}
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">OK
@@ -85,7 +86,7 @@
                         <!-- <td>
                             <button type="button" class="btn btn-primary" data-toggle="modal">link</button>
                         </td> -->
-                        <td><a href={{ tweet.link }}>link</a></td>
+                        <td><a href={{ tweet['tweet-url'] }}>link</a></td>
                     </tr>
                 {% endfor %}
                 {% set tweets = [] %}

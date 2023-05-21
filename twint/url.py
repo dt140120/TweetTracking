@@ -67,7 +67,7 @@ async def MobileProfile(username, init):
 async def Search(config, init):
     logme.debug(__name__ + ':Search')
     url = base
-    tweet_count = 100 if not config.Limit else config.Limit
+    tweet_count = 100
     q = ""
     params = [
         # ('include_blocking', '1'),
